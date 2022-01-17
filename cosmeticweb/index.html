@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화장품 페이지 with 강사님</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+    <!--div를 너무 많이 쓰면 접근성에 문제가 됨
+    홈페이지 키고 tab을 두번누르면 나오는 접근성 로고 / 무조건 만들어야함(for 시각장애인)-->
+    <div id="skipNavi"> <!--id보다는 class를 많이 쓰는게 더욱 도움 됨 // back단에서 요청이옴, id로하면 back에서 문제가 생김-->
+        <a href="#container">본문바로가기</a> <!--#container는 id값 페이지내에서 이동할때는, 클래스는 링크못검, 무조건 아이디로만 링크가능-->
+        <a href="#gnb">주메뉴바로가기</a>
+    </div> 
+
+    <div id="wrapper"> <!--전체를 둘러싸는 태그-->
+        <header class="header"> <!--본래를 class이름이 header나 tag이름이면 안됨-->
+            <aside class="headerIntro clearfix"> <!--aside 태그-->
+                <ul class="intro_quick_menu"> <!--ul/ol/dl택그 중에 ul/dl이 가장 많이 쓰임 -->
+                    <li><a href="">즐겨찾기</a></li>
+                    <li><a href="">바로가기</a></li>
+                </ul> <!--회사마다 코드적는 방법은 각자 다름 카멜케이스/_/-->
+                <ul class="intro_menu">
+                    <li><a href="">로그인</a></li>
+                    <li><a href="">회원가입</a></li>
+                    <li><a href="">마이페이지</a></li>
+                    <li><a href="">주문조회</a></li>
+                    <li><a href="">장바구니</a></li>
+                </ul>
+            </aside> <!--display:flex는 모바일에서 사용없으나, IE나 크롬하위버전에서 안됨-->
+            <div class="header_logo_wrap">
+                <h1><img src="./image/logo.gif" alt="자연의 진실을 담은 제품 내추럴 스킨 Natural SKIN"/></h1> <!--스크린 리더기가 읽는것, 아무것도 안넣으면 "그래픽"으로만 읽음/Alt태그는 반드시 정확히 넣어야함 // html4에서는 img태그 마지막에 / 무조건 넣어줘야함 -->
+                <form method="post" action="#" name="seachfrm" class="header_search"> <!--action은 백단에서 건드리므로 우리는 건들지 않음.-->
+                    <label for="search" class="skip">
+                        검색 <!--화면상에는 보이지 않지만 스크린 리더기가 읽음-->
+                    </label>
+                    <input type="text" id="search" name="keyword" class="input_text"/> <!--label속 for의 값과 input의 id값이 반드시 같아야함/그래야지만 스크린 리더기가 읽을수 있음-->
+                    <button type="submit" class="search_btn close">제품검색</button> <!--button종류 type 전송버튼/취소버튼.. "제품검색"은 스크린리더기가 읽음-->
+                    <!--fieldset과 리젠드 - 관련된 성질들끼리 그룹화시키는것, 초기에는 필수였는데 현재는 선택 /작업자 선택 -->
+                </form> <!--name속성은 a,form.img태그에서만 넣을 수 있다. 다른 태그에서는 name속성을 쓰지 않는다. name쓰는 이유? script작업에서 쓰려고-->
+            </div>
+
+            <nav class="gnb_wrap" id="gnb"> <!--class css적용하기 위해서, id는 위에서 "바로가기"클릭하기 위해서-->
+                <h2 class="skip">주메뉴</h2> <!--시각장애우분들을 위해서 넣음-->
+                <ul class="gnb clearfix">
+                    <li><a href="">회사소개</a>  <!--1차 메뉴 // 이런식으로 해야지 접근성 마크업을 딸 수 있다.-->
+                        <ul class="gnb_deth2">  <!--2차 메뉴 // 자바스크립트 또는 제이쿼리로 구현-->
+                            <li><a href="">회사소개</a></li>
+                            <li><a href="">회사소개</a></li>
+                            <li><a href="">회사소개</a></li>
+                            <li><a href="">회사소개</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">사업분야</a>
+                        <ul class="gnb_deth2">  <!--2차 메뉴 // 자바스크립트 또는 제이쿼리로 구현-->
+                            <li><a href="">사업분야</a></li>
+                            <li><a href="">사업분야</a></li>
+                            <li><a href="">사업분야</a></li>
+                            <li><a href="">사업분야</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">커뮤니티</a>
+                        <ul class="gnb_deth2">  <!--2차 메뉴 // 자바스크립트 또는 제이쿼리로 구현-->
+                            <li><a href="">커뮤니티</a></li>
+                            <li><a href="">커뮤니티</a></li>
+                            <li><a href="">커뮤니티</a></li>
+                            <li><a href="">커뮤니티</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">고객센터</a>
+                        <ul class="gnb_deth2">  <!--2차 메뉴 // 자바스크립트 또는 제이쿼리로 구현-->
+                            <li><a href="">고객센터</a></li>
+                            <li><a href="">고객센터</a></li>
+                            <li><a href="">고객센터</a></li>
+                            <li><a href="">고객센터</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">쇼핑몰</a>
+                        <ul class="gnb_deth2">  <!--2차 메뉴 // 자바스크립트 또는 제이쿼리로 구현-->
+                            <li><a href="">쇼핑몰</a></li>
+                            <li><a href="">쇼핑몰</a></li>
+                            <li><a href="">쇼핑몰</a></li>
+                            <li><a href="">쇼핑몰</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="container" id=container>
+            <section class="visual_wrap">
+                <h3 class="skip">메인배너</h3>  <!--html 5는 section h태그 안달면 경고메세지가 뜸-->
+                <span class="visual_btn_left btn"><a href="">이전보기</a></span> <!--p태그자체는 문단이기 때문에 p는 잘쓰이지 않는다. 차라리 span태그-->
+                <ul class="visual">
+                    <li>
+                        <a href=""> <!--html 5에서만 a(인라인요소) 안에 모든 블럭요소를 넣을 수 있다. 본래 인라인요소안에 블럭요소 못넣는데, a태그만 예외!!!!! //유지보수시 문서선언을 잘 봐야한다.(이전버전은 불가능하므로)  -->
+                            <div class="text_wrap">
+                                <strong class="visual_title">자연의 진실<span>을 창조하는 기업</span></strong> <!--strong/ em 중요한거냐 강조냐에 따라 태그 달라짐 // 을 창조하는 기업은 bold처리 안됨-->
+                                <span class="visual_text">
+                                    고객의 행복한 뷰티스타일을 만들고<br/>
+                                    지역사회와 함께 발전하는 국민기업이 되겠습니다
+                                </span>
+                                <span class="visual_btn_our">Our Services</span>
+                            </div>  <!--p태그는 블럭요소. 모든 블럭요소안에 블럭요소가 들어갈수 있고 모든 인라인 요소 안에 인라인 요소가 들어갈 수 있음. 단!!!!! p태그안에 p태그는 넣으면 안됨 / span고 strong은 둘다 인라인 요소 -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href=""> 
+                            <div class="text_wrap">
+                                <strong class="visual_title">아름다움<span>을 창조하는 기업</span></strong> 
+                                <span class="visual_text">
+                                    고객의 행복한 뷰티스타일을 만들고<br/>
+                                    지역사회와 함께 발전하는 국민기업이 되겠습니다
+                                </span>
+                                <span class="visual_btn_our">Our Services</span>
+                            </div>  
+                        </a>
+                    </li>
+                    <li>
+                        <a href=""> 
+                            <div class="text_wrap">
+                                <strong class="visual_title">Natural<span>을 창조하는 기업</span></strong> 
+                                <span class="visual_text">
+                                    고객의 행복한 뷰티스타일을 만들고<br/>
+                                    지역사회와 함께 발전하는 국민기업이 되겠습니다
+                                </span>
+                                <span class="visual_btn_our">Our Services</span>
+                            </div>  
+                        </a>
+                    </li>
+                </ul>
+                <div class="visual_btn">
+                    <a href="" class="on"><span>1</span></a> <!--JS를 통해서 버튼 클릭시 class="on"이 두번째,세번째로 이동함-->
+                    <a href="" ><span>2</span></a>
+                    <a href="" ><span>3</span></a>
+                </div>
+                <span class="visual_btn_right btn"><a href="">다음보기</a></span>
+            </section>
+
+            <section class="content_wrap clearfix">
+                <article class="contents_1">
+                    <div class="cont_div1 clearfix">
+                        <div class="company">
+                            <a href="">
+                                <h3>COMPANY</h3>
+                                <p>고객의 행복한 뷰티 스타일을 만들고 <br/>
+                                지역사회와 함께 발전하는 <br/>
+                                국민기업이 되겠습니다.
+                            </p> <!--strong이나 span태그 안에 p 못넣음 오로지 a태그 안에만 블럭태그p넣을 수 있음. -->
+                            </a>
+                        </div>
+                        <div class="product_cont">
+                            <a href="">
+                                <h3>PRODUCT</h3>
+                                <p>고객의 행복한 뷰티 스타일을 만들고 <br/>
+                                지역사회와 함께 발전하는<br/>
+                                국민기업이 되겠습니다.
+                                </p> 
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cont_div2 clearfix">
+                        <div class="customer">
+                            <h3>고객센터</h3>
+                            <strong class="tell">031&middot;1234&middot;5678</strong> <!--가운데점을 뜻하는 태그 &middot-->
+                            <span><span>상담</span>오전9시~오후6시(토,일요일 공휴일 휴무)</span><br/> <!--의미가 중요해서 강조하고 싶으면 strong태그 / 텍스트가 아무의미없지만 굵은 굵자 b태그, Css로 처리하는게 나음-->
+                            <span><span>점심</span>오후12시~오후1시30분</span>
+                        </div>
+                        <div class="notice">
+                            <h3>공지사항</h3>
+                            <ul class="notice_list">
+                                <li><a href="">Natural공지사항 입니다.</a></li>
+                                <li><a href="">Natural공지사항 입니다.</a></li>
+                                <li><a href="">Natural공지사항 입니다.</a></li>
+                                <li><a href="">Natural공지사항 입니다.</a></li>
+                            </ul>
+                            <span class="more"> 
+                                <a href="">
+                                    <img src="./image/main_plus_icon.gif" alt="">
+                                </a>
+                            </span> <!--더보기 버튼(+)은 span혹은 p태그로 한다-->
+                        </div>
+                    </div>
+                </article>
+
+                <article class="contents_2">
+                    <ul class="contents_banner">
+                        <li>
+                            <a href="">
+                                <strong class="cont_banner_title"><span>Natural</span>SKIN</strong>
+                                <span class="cont_banner_text"> Natural SKIN은 미래를 내다보는 앞선 생각과 
+                                    아름다움을 영상에 담았습니다. 
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <strong class="cont_banner_title"><span>Natural</span>SKIN</strong>
+                                <span class="cont_banner_text"> Natural SKIN은 미래를 내다보는 앞선 생각과 
+                                    아름다움을 영상에 담았습니다. 
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <strong class="cont_banner_title"><span>Natural</span>SKIN</strong>
+                                <span class="cont_banner_text"> Natural SKIN은 미래를 내다보는 앞선 생각과 
+                                    아름다움을 영상에 담았습니다. 
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="banner_btn_number">
+                        <a href="" class="on"><span>1</span></a>
+                        <a href="" ><span>2</span></a>
+                        <a href="" ><span>3</span></a>
+                    </div>
+
+                    <div class="banner_btn_arrow">
+                        <span class="banner_btn_prev banner_btn">
+                            <a href="">배너이전보기</a>
+                        </span>
+                        <span class="banner_btn_nxt banner_btn">
+                            <a href="">배너다음보기</a>
+                        </span>
+                    </div>
+                </article> <!--ul.li가 div보다는 js짜기가 조금더 용이-->
+            </section>
+
+            <section class="inquiry_wrap">
+                <h3 class="skip">문의하기</h3>
+                <div class="inquiry_cont">
+                    <p> 고객님께 필요한 맞춤 상담! <span>지금 바로 문의 하세요.</span></p>
+                    <a href=""><span class="inquiry_more">문의하기</span></a>
+                </div>
+            </section>
+
+            <article class="product_wrap">
+                <h3 class="skip">제품안내</h3>
+                <ul class="product_list clearfix">
+                    <li>
+                        <a href="">
+                            <img src="./image/28_shop1_15299104118131.jpg" alt="skin">
+                        </a>
+                        <strong class="sale">14%</strong> <!--할인율은 중요하므로 strong태그 붙임 // -->
+                        <!--여기까지는 화면을 열면 보이는 장면 // 밑의 코드는 마우스를 올렸을때 나타나는 현상-->
+                        <div class="product_box"> <!--마우스 올렸을때 보여지는 게 첨에는 안보이지만 코딩해야함-->
+                            <span class="product_title">Natural SKIN</span>
+                            <span class="product_btn">
+                                <a href=""><img src="./image/icon_201805021334332400.png" alt="검색"/></a>
+                                <a href=""><img src="./image/icon_201805021334384600.png" alt="장바구니"/></a>
+                                <a href=""><img src="./image/icon_201805021334433900.png" alt="관심등록"/></a>
+                            </span>
+                        </div>
+                    </li> <!--li태그안에 마우스 올리기 전과 후의 효과 모두 넣어야함-->
+                    <li>
+                        <a href="">
+                            <img src="./image/29_shop1_15299105007502.jpg" alt="skin">
+                        </a>
+                        <strong class="sale">24%</strong> 
+                        <div class="product_box"> 
+                            <span class="product_title">Natural SKIN</span>
+                            <span class="product_btn">
+                                <a href=""><img src="./image/icon_201805021334332400.png" alt="검색"/></a>
+                                <a href=""><img src="./image/icon_201805021334384600.png" alt="장바구니"/></a>
+                                <a href=""><img src="./image/icon_201805021334433900.png" alt="관심등록"/></a>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./image/30_shop1_15299105226688.jpg" alt="skin">
+                        </a>
+                        <strong class="sale">34%</strong> 
+                        <div class="product_box"> 
+                            <span class="product_title">Natural SKIN</span>
+                            <span class="product_btn">
+                                <a href=""><img src="./image/icon_201805021334332400.png" alt="검색"/></a>
+                                <a href=""><img src="./image/icon_201805021334384600.png" alt="장바구니"/></a>
+                                <a href=""><img src="./image/icon_201805021334433900.png" alt="관심등록"/></a>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./image/31_shop1_15299105479215.jpg" alt="skin">
+                        </a>
+                        <strong class="sale">44%</strong> 
+                        <div class="product_box"> 
+                            <span class="product_title">Natural SKIN</span>
+                            <span class="product_btn">
+                                <a href=""><img src="./image/icon_201805021334332400.png" alt="검색"/></a>
+                                <a href=""><img src="./image/icon_201805021334384600.png" alt="장바구니"/></a>
+                                <a href=""><img src="./image/icon_201805021334433900.png" alt="관심등록"/></a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+            <section class="quick_menu_wrap">
+                <h3 class="skip">빠른메뉴</h3>
+                <ul class="quick_menu clearfix">
+                    <li>
+                        <a href="">
+                            <i class="fas fa-arrow-alt-circle-right"></i> <!--icon은 color,fontsize로 변경가능-->
+                            <span>브랜드소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="far fa-grin-tongue"></i>
+                            <span>찾아오시는길</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-heart"></i>
+                            <span>상품문의</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fab fa-angellist"></i>
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fas fa-book-open"></i>
+                            <span>상품후기</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <div class="footer_menu_wrap">
+                <ul class="footer_menu clearfix">
+                    <li><a href="">홈</a></li>
+                    <li><a href="">회사소개</a></li>
+                    <li><a href="">개인정보처리방침</a></li>
+                    <li><a href="">이용약관</a></li>
+                    <li><a href="">이벤트</a></li>
+                </ul>
+            </div>
+            <div class="footer_wrap">
+                <div class="footer_add clearfix">
+                    <div class="add">
+                        <p class="add_1">(01234)서울시 구로구 디지털로 306(구로동)</p>               <!--html4까지는 adress를 무조건 씀/ html5부터는 p태그를 씀 -->
+                        <p class="add_2">Tel:1599-9999 <a href="tel:02-1234-5678">전화클릭</a>Fzx:02-1234-5678</p>
+                        <p class="add_3">Email:Natural@natural.co.kr</p>
+                    </div>
+                    <div class="footer_banner">
+                        <ul>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_24.gif" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_epost.gif" alt="우체국택배">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_ftc.gif" alt="공정거래">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_hometax.gif" alt="홈텍스">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_kcp.gif" alt="kcp">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="./image/footer_banner_ssl.gif" alt="ssl">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
+<!--
+색약인 분들을 위해서 크기와 색깔을 같이 변화시켜야함
+색으로만 구분하는건 잘못된 것임.-->
+
+
+
+
+
+<!--구글창 ) 웹접근성 연구소
+    NULI를 꼼꼼히 다 읽어보기 -> 이거에 맞춰서 작업하는게 웹 접근성임.
+    요즘 매우 강화되고 있어서, 웹접근성에 대해서 알아야함. 
+    <한국형 웹 콘텐츠 접근성 지침/ 모바일 애플리케이션 지침소>
+
+강사님 "다음과 네이버 모두 웹접근성 연구소 홈페이지 있으므로 모두 읽어볼 것"
+-->
+
+<!--큰 그림은 책읽듯이 왼쪽에서 오른쪽 방향으로
+작은 그림은 문맥상 사람이 눈으로 먼저 보는 순서대로 // 
+html 다 한다음에 css 입히는게 정석적인 순서임-!! -->
+
+<!--article과 section의 차이는 뭐징?...-->
+
+<!--마크업 검사
+네이버 주소창 "마크업 검사"
+W3C홈페이지
+http://validator.kldp.org/
+-->

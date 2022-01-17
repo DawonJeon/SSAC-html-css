@@ -1,0 +1,75 @@
+/**
+ * @author (주)한신정보기술 퍼블리셔팀 권정현
+ * @since 2019-03-18
+ * @version 1.0.0
+ */
+(function($) {
+	'use strict';
+
+	$(function() {
+		var footer = tag.footer,
+			$footer = footer.$element;
+
+		//배너
+		var footerBanner = footer.banner = {},
+			$footerBanner = footerBanner.$element = $footer.find('.footer_banner'),
+			$footerBannerPrev = footerBanner.$prev = $footerBanner.find('.footer_banner_prev'),
+			$footerBannerAuto = footerBanner.$auto = $footerBanner.find('.footer_banner_auto'),
+			$footerBannerNext = footerBanner.$next = $footerBanner.find('.footer_banner_next'),
+			$footerBannerList = footerBanner.$list = $footerBanner.find('.footer_banner_list');
+
+		$footerBannerList.slick({
+			draggable : false,
+			swipe : false,
+			slidesToShow : 7,
+			touchMove : false,
+			cssEase : 'cubic-bezier(1, 0, 0, 1)',
+			speed : 250,
+			prevArrow : $footerBannerPrev,
+			nextArrow : $footerBannerNext,
+			autoArrow : $footerBannerAuto,
+			pauseText : '정지',
+			playText : '재생',
+			autoplay : true,
+			pauseOnArrowClick : true,
+			pauseOnDirectionKeyPush : true,
+			pauseOnSwipe : true,
+			variableWidth : true,
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					swipeToSlide : true
+				}
+			}]
+		});
+
+		//사이트
+		var footerSite = footer.site = {},
+			$footerSite = footerSite.$element = $footer.find('.footer_site'),
+			$footerSiteBtn = footerSite.$btn = $footerSite.find('.footer_site_btn'),
+			$footerSiteClose = footerSite.$close = $footerSite.find('.footer_site_close');
+
+		$footerSiteBtn.on('click.layoutComponent', function(event) {
+			var $this = $(this),
+				$footerSiteContent = $this.next('.footer_site_content');
+
+			//애니메이션이 끝났을 때
+			if(!$footerSiteContent.is(':animated')) {
+				$footerSiteContent.slideToggle(250, 'easeInOutExpo').parent('li').toggleClass('active').siblings('li').removeClass('active').children('.footer_site_content').slideUp(250, 'easeInOutExpo');
+			}
+		});
+
+		$footerSiteClose.on('click.layoutComponent', function(event) {
+			var $this = $(this),
+				$footerSiteContent = $this.parents('.footer_site_content');
+
+			//애니메이션이 끝났을 때
+			if(!$footerSiteContent.is(':animated')) {
+				$footerSiteContent.slideUp(250, 'easeInOutExpo').parent('li').removeClass('active');
+			}
+		});
+	});
+})(window.jQuery);

@@ -1,0 +1,456 @@
+/**
+ * @author (주)한신정보기술 퍼블리셔팀 권정현
+ * @since 2019-03-18
+ * @version 1.0.0
+ */
+(function($) {
+	'use strict';
+
+	window.tag = {};
+
+	/**
+	 * @name URI 구성 요소 디코딩
+	 * @param {string} value
+	 * @return {string}
+	 * @since 2018-07-13
+	 */
+	function _decodeURIComponent(value) {
+		return (typeof value === 'string') ? decodeURIComponent(value.replace(/\+/g, '%20')) : '';
+	}
+
+	/**
+	 * @name getParam
+	 * @param {string} value
+	 * @param {string} name
+	 * @return {number}
+	 * @since 2018-07-13
+	 */
+	window.getParam = function(value, name) {
+		var result = '';
+
+		//문자일 때
+		if(typeof value === 'string') {
+			var search = value.split('?')[1];
+
+			//문자이면서 파라미터가 있을 때
+			if(typeof name === 'string' && search) {
+				search = search.split('&');
+
+				for(var i = 0, searchLength = search.length, lastI = searchLength - 1; i < searchLength; i++) {
+					var params = search[i].split('=');
+
+					//값이 같을 때
+					if(name === params[0]) {
+						var param = params[1];
+
+						//값이 있을 때
+						if(param) {
+							//마지막일 때
+							if(lastI === i) {
+								param = param.split('#')[0];
+							}
+
+							//값이 있을 때
+							if(param) {
+								do {
+									param = _decodeURIComponent(param);
+									result = _decodeURIComponent(param);
+								}
+
+									//값이 다를 때
+								while(param !== result);
+							}
+						}
+
+						break;
+					}
+				}
+			}
+		}
+
+		return result;
+	};
+
+	var $window = tag.$window = $(window),
+		$document = tag.$document = $(document),
+		$html = tag.$html = $('html'),
+		$head = tag.$head = $('head'),
+		$inArray = $.inArray,
+		$screen = $.screen,
+
+		/**
+		 * @name 탭 메뉴 크기 적용
+		 * @since 2017-01-16
+		 * @param {element || jQuery} element
+		 */
+		setTabMenuSize = function(element) {
+			$(element).each(function(index, element) {
+				var $element = $(element),
+					unlock = $element.data('tabUnlock'),
+					outerHeight = $element.find(' > .tab_list > .active > .tab_content').outerHeight() || '',
+					state = $screen.settings.state;
+
+				//값이 없을 때
+				if(!unlock) {
+					unlock = '';
+				}
+
+				unlock = unlock.split(',');
+
+				for(var i = 0, unlockLength = unlock.length; i < unlockLength; i++) {
+					//해제 상태가 있을 때
+					if($inArray(unlock[i], state) > -1) {
+						//초기화
+						outerHeight = '';
+
+						//반복 중지
+						break;
+					}
+				}
+
+				//크기 적용
+				$element.css('padding-bottom', outerHeight);
+			});
+		};
+
+	//사이트
+	var site = window.site,
+		id = site.id,
+		key = site.key,
+		href = location.href;
+
+	//아이디가 없을 때
+	if(!id || id.substring(0, 2) === '@@' || id[0] === '$') {
+		site.id = id = getParam(href, 'id') || href.split('/')[4];
+	}
+
+	//키가 없을 때
+	if(!key || key.substring(0, 2) === '@@' || key[0] === '$') {
+		site.key = key = getParam(href, 'key');
+	}
+
+	$(function() {
+		var $body = tag.$body = $('body'),
+			$htmlAndBody = tag.$htmlAndBody = $html.add($body),
+			$wrapper = tag.$wrapper = $('#wrapper'),
+			header = tag.header = {},
+			$header = header.$element = $('#header'),
+			container = tag.container = {},
+			$container = container.$element = $('#container'),
+			footer = tag.footer = {},
+			$footer = footer.$element = $('#footer');
+
+		//해쉬 이동
+		var $anchor = tag.$anchor = $('[href^="#"]');
+
+		$anchor.on('click.layout', function(event) {
+			var $this = $(this),
+				hash = this.hash,
+				data = $this.data(),
+				$hash = $(hash);
+
+			//예외가 아닐 때
+			if(!data.hasOwnProperty('anchorException')) {
+				//해쉬 요소가 있고 애니메이션이 끝났을때
+				if($hash.length && !$htmlAndBody.is(':animated')) {
+					var hasTabindex = $hash.attr('tabindex'),
+						offset = $hash.offset(),
+						isRun = false;
+
+					$htmlAndBody.animate({
+						scrollTop : offset.top,
+						scrollLeft : offset.left
+					}, {
+						duration : data.anchorDuration || 250,
+						easing : data.anchorEasing || 'easeInOutExpo',
+						complete : function() {
+							//처음으로 끝났을 때
+							if(!isRun) {
+								var complete = data.anchorComplete;
+
+								//tabindex 속성을 가지고 있지 않을 때
+								if(!hasTabindex) {
+									$hash.attr('tabindex', -1);
+								}
+
+								$hash.focus();
+
+								location.hash = hash;
+
+								//tabindex 속성을 가지고 있지 않을 때
+								if(!hasTabindex) {
+									$hash.removeAttr('tabindex');
+								}
+
+								//함수일 때
+								if(typeof complete === 'function') {
+									complete();
+								}
+
+								isRun = true;
+							}
+						}
+					});
+				}
+
+				event.preventDefault();
+			}
+		});
+
+		//탭메뉴
+		var tabMenu = container.tabMenu = {},
+			$tabMenu = tabMenu.$element = $('.tab_menu'),
+			$tabItem = tabMenu.$item = $tabMenu.find('.tab_item'),
+			$tabBtn = tabMenu.$btn = $tabMenu.find('.tab_btn');
+
+		$tabBtn.on('click.layout', function(event) {
+			//해쉬가 있거나 버튼일 때
+			if(this.hash || this.tagName === 'BUTTON') {
+				var $this = $(this),
+					$parentsTabMenu = $this.parents('.tab_menu'),
+					$parentTabMenu = $parentsTabMenu.first(),
+					$parentTabItem = $this.parent('.tab_item'),
+					hasTabItem = !!$parentTabItem.length,
+					index = (hasTabItem) ? $parentTabItem.index() : $this.index(),
+					$tabContent = $parentTabMenu.find(' > .tab_contents > .tab_content:eq(' + ((index > -1) ? index : NaN) + ')'),
+					$siblingsTabContent = $tabContent.siblings('.tab_content'),
+					isToggle = $parentTabMenu.hasClass('toggle'),
+					isSiblings = $parentTabMenu.hasClass('siblings');
+
+				//탭 아이템이 있을 때
+				if(hasTabItem) {
+					//클래스를 가지고 있을 때
+					if(isToggle) {
+						$parentTabItem.toggleClass('active');
+					}else{
+						$parentTabItem.addClass('active');
+					}
+
+					//클래스를 가지고 있을 때
+					if(isSiblings) {
+						$parentTabItem.siblings('.tab_item').removeClass('active');
+					}
+				}else{
+					//클래스를 가지고 있을 때
+					if(isToggle) {
+						$this.toggleClass('active');
+					}else{
+						$this.addClass('active');
+					}
+
+					//클래스를 가지고 있을 때
+					if(isSiblings) {
+						$this.siblings('.tab_btn').removeClass('active');
+					}
+				}
+
+				//클래스를 가지고 있을 때
+				if(isToggle) {
+					$tabContent.toggleClass('active');
+				}else{
+					$tabContent.addClass('active');
+				}
+
+				//클래스를 가지고 있을 때
+				if(isSiblings) {
+					$siblingsTabContent.removeClass('active');
+				}
+
+				//탭메뉴 크기 적용
+				setTabMenuSize($parentsTabMenu);
+
+				event.preventDefault();
+			}
+		});
+		
+		$window.on('screen:wide.layout screen:web.layout', function(event) {
+			window.mode = 'pc';
+		});
+
+		$window.on('screen:tablet.layout screen:phone.layout', function(event) {
+			window.mode = 'mobile';
+		});
+
+		//lnb
+		var lnb = header.lnb = {},
+			$lnb = lnb.$element = $header.find('.lnb'),
+			$lnbTabItem = lnb.$tabItem = $lnb.find('.tab_item'),
+			$lnbNavItem = lnb.$navItem = $lnbTabItem.eq(0),
+			$lnbTabContent = lnb.$tabContent = $lnb.find('.tab_content'),
+			$lnbNavContent = lnb.$navContent = $lnbTabContent.eq(0),
+			$lnbShow = lnb.$show = $lnb.find('.menu_show'),
+			$lnbShowBtn = lnb.$showBtn = $lnbShow.find('.menu_button'),
+			$lnbHide = lnb.$hide = $lnb.find('.menu_hide'),
+			$lnbHideBtn = lnb.$hideBtn = $lnbHide.find('.menu_button'),
+			$lnbDepthItem = lnb.$depthItem = $lnb.find('.depth_item'),
+			$lnbMenu = lnb.$menu = $lnb.find('.menu'),
+			$lnbDepth2FirstChild = lnb.$depth2FirstChild = $lnbMenu.find('.depth2 > :first-child'),
+			$lnbSpy = lnb.$spy = $lnbMenu.find('.spy:last'),
+			lnbHeight;
+
+		$lnbSpy.parents('.depth_item').addClass('actived');
+
+		function refreshLnbHeight() {
+			lnbHeight = $lnbMenu.css('transition-property', 'none').outerHeight() || '';
+			$lnbMenu.css('transition-property', '');
+		}
+
+		$lnbShowBtn.on('click.layout', function(event) {
+			//클래스 토글
+			$html.toggleClass('lnb_show');
+		});
+
+		$lnbHideBtn.on('click.layout', function(event) {
+			//클래스 토글
+			$html.removeClass('lnb_show');
+		});
+
+		$window.on('screen:wide.layout screen:web.layout', function(event) {
+			$lnbTabItem.removeClass('active');
+			$lnbNavItem.addClass('active');
+
+			$lnbTabContent.removeClass('active')
+			$lnbNavContent.addClass('active');
+		});
+
+		$lnbDepthItem.on('mouseover.layout focusin.menu', function(event) {
+			if(window.mode === 'pc') {
+				var $this = $(this),
+					$depth1Item = ($this.hasClass('depth1_item')) ? $this : $this.parents('.depth1_item');
+
+				if($lnbMenu.hasClass('pulldown')) {
+					var maxHeight = 0;
+
+					$lnbDepth2FirstChild.each(function(index, element) {
+						var $element = $(element),
+							outerHeight = $element.outerHeight() || 0;
+
+						//기존 값 보다 얻은 값이 초과일 때
+						if(outerHeight > maxHeight) {
+							maxHeight = outerHeight;
+						}
+					});
+
+					$lnbMenu.height(lnbHeight + maxHeight);
+				}else if($lnbMenu.hasClass('eachdown')) {
+					$lnbMenu.height(lnbHeight + ($depth1Item.find('.depth2 > :first-child').outerHeight() || ''));
+				}
+
+				$html.addClass('lnb_open');
+				$lnbDepthItem.removeClass('active');
+				$this.addClass('active').parents('li').addClass('active');
+			}
+
+			event.stopPropagation();
+		}).on('click.layout', function(event) {
+			if(mode === 'mobile') {
+				var $this = $(this),
+					$depthText = $this.children('.depth_text'),
+					eventTarget = event.target;
+
+				if($depthText.find(eventTarget).length || $depthText[0] === eventTarget) {
+					if($this.hasClass('depth1_item')) {
+						if($this.hasClass('active')) {
+							$html.removeClass('lnb_open');
+						}else{
+							$html.addClass('lnb_open');
+						}
+					}
+
+					if($this.children('.depth').length) {
+						$this.toggleClass('active').siblings('.depth_item').removeClass('active');
+						event.preventDefault();
+					}
+				}
+			}
+
+			event.stopPropagation();
+		}).each(function(index, element) {
+			var $element = $(element);
+
+			if($element.children('.depth').length) {
+				$element.addClass('has');
+			}else{
+				$element.addClass('solo');
+			}
+		});
+
+		$lnbMenu.find('.depth1_item:last-child .depth2 .depth2_list .depth2_item:last-child .depth2_text').on('focusout.layout', function(event) {
+			if(mode === 'pc') {
+				$lnbMenu.height('');
+				$html.removeClass('lnb_open');
+				$lnbDepthItem.removeClass('active');
+			}
+		});
+		
+		$lnbMenu.on('mouseleave.layout', function(event) {
+			if(mode === 'pc') {
+				$lnbMenu.height('');
+				$html.removeClass('lnb_open');
+				$lnbDepthItem.removeClass('active');
+			}
+		});
+
+		$window.on('screen:wide.layout screen:web.layout', function(event) {
+			refreshLnbHeight();
+
+			if($lnbSpy.length) {
+				$html.removeClass('lnb_open');
+				$lnbSpy.parents('.depth_item').removeClass('active');
+			}
+		});
+
+		$window.on('screen:tablet.layout screen:phone.layout', function(event) {
+			refreshLnbHeight();
+
+			if($lnbSpy.length) {
+				$html.addClass('lnb_open');
+				$lnbSpy.parents('.depth_item').addClass('active');
+			}
+		});
+	});
+
+	$document.on('ready.layout', function(event) {
+		/**
+		 * @link {https://github.com/JungHyunKwon/screen}
+		 */
+		$screen({
+			state : [{
+				name : 'wide',
+				horizontal : {
+					from : 9999,
+					to : 1223
+				}
+			}, {
+				name : 'web',
+				horizontal : {
+					from : 1222,
+					to : 1001
+				}
+			}, {
+				name : 'tablet',
+				horizontal : {
+					from : 1000,
+					to : 641
+				}
+			}, {
+				name : 'phone',
+				horizontal : {
+					from : 640,
+					to : 0
+				}
+			}]
+		});
+	});
+
+	$window.on('load.layout', function(event) {
+		var $tabItem = tag.container.tabMenu.$item;
+
+		$window.on('screen:resize.layout', function(event) {
+			//활성화된 탭 아이템을 역순으로 반복
+			$($tabItem.filter('.active').get().reverse()).each(function(index, element) {
+				setTabMenuSize($(element).parents('.tab_menu'));
+			});
+		}).triggerHandler('screen:resize.layout');
+	});
+})(window.jQuery);

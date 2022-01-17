@@ -1,0 +1,199 @@
+/**
+ * @author (주)한신정보기술 퍼블리셔팀 권정현
+ * @since 2019-03-18
+ * @version 1.0.0
+ */
+(function($) {
+	'use strict';
+
+	var $window = tag.$window;
+
+	$(function() {
+		var container = tag.container,
+			$container = container.$element;
+
+		var rowgroup = container.rowgroup = {},
+			$rowgroup = rowgroup.$element = $container.children('.rowgroup'),
+			$rowgroupWrap = rowgroup.$wrap = $rowgroup.children('.wrap');
+
+		//링크2
+		var rowgroupLink2 = rowgroup.link2 = {},
+			$rowgroupLink2 = rowgroupLink2.$element = $rowgroupWrap.children('.link'),
+			$rowgroupLink2Prev = rowgroupLink2.$prev = $rowgroupLink2.find('.link_prev'),
+			$rowgroupLink2Next = rowgroupLink2.$next = $rowgroupLink2.find('.link_next'),
+			$rowgroupLink2List = rowgroupLink2.$list = $rowgroupLink2.find('.link_list');
+
+		$rowgroupLink2List.slick({
+			draggable : false,
+			swipe : false,
+			touchMove : false,
+			slidesToShow : 8,
+			cssEase : 'cubic-bezier(1, 0, 0, 1)',
+			speed : 250,
+			prevArrow : $rowgroupLink2Prev,
+			nextArrow : $rowgroupLink2Next,
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					slidesToShow : 6
+				}
+			}, {
+				breakpoint : 801,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					slidesToShow : 4
+				}
+			}, {
+				breakpoint : 641,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					slidesToShow : 3
+				}
+			}]
+		});
+
+		//비주얼
+		var visual = rowgroup.visual = {},
+			$visual = visual.$element = $rowgroup.find('.visual'),
+			$visualPrev = visual.$prev = $visual.find('.visual_prev'),
+			$visualAuto = visual.$auto = $visual.find('.visual_auto'),
+			$visualNext = visual.$next = $visual.find('.visual_next'),
+			$visualList = visual.$list = $visual.find('.visual_list');
+
+		$visualList.slick({
+			draggable : false,
+			swipe : false,
+			touchMove : false,
+			cssEase : 'cubic-bezier(1, 0, 0, 1)',
+			speed : 250,
+			pauseOnArrowClick : true,
+			pauseOnDirectionKeyPush : true,
+			pauseOnSwipe : true,
+			autoplay : true,
+			playText : '재생',
+			pauseText : '정지',
+			autoArrow : $visualAuto,
+			prevArrow : $visualPrev,
+			nextArrow : $visualNext,
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					adaptiveHeight : true
+				}
+			}]
+		});
+
+		var rowgroup2 = container.rowgroup2 = {},
+			$rowgroup2 = rowgroup2.$element = $container.children('.rowgroup2');
+
+		//팝업
+		var popup = rowgroup2.popup = {},
+			$popup = popup.$element = $rowgroup2.find('.popup'),
+			$popupPrev = popup.$prev = $popup.find('.popup_prev'),
+			$popupAuto = popup.$auto = $popup.find('.popup_auto'),
+			$popupNext = popup.$next = $popup.find('.popup_next'),
+			$popupList = popup.$list = $popup.find('.popup_list');
+
+		$popupList.slick({
+			draggable : false,
+			swipe : false,
+			touchMove : false,
+			cssEase : 'cubic-bezier(1, 0, 0, 1)',
+			speed : 250,
+			pauseOnArrowClick : true,
+			pauseOnDirectionKeyPush : true,
+			pauseOnSwipe : true,
+			autoplay : true,
+			playText : '재생',
+			pauseText : '정지',
+			autoArrow : $popupAuto,
+			prevArrow : $popupPrev,
+			nextArrow : $popupNext,
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					swipeToSlide : true,
+					adaptiveHeight : true
+				}
+			}]
+		});
+
+		//링크
+		var rowgroup2Link = rowgroup2.link = {},
+			$rowgroup2Link = rowgroup2Link.$element = $rowgroup2.find('.link'),
+			$rowgroup2LinkList = rowgroup2Link.$list = $rowgroup2Link.find('.link_list');
+
+		$rowgroup2LinkList.slick({
+			cssEase : 'cubic-bezier(1, 0, 0, 1)',
+			speed : 250,
+			arrows : false,
+			slidesToShow : 6,
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					swipeToSlide : true,
+					variableWidth : true,
+					slidesToShow : 1
+				}
+			}]
+		});
+
+		var rowgroup3 = container.rowgroup3 = {},
+			$rowgroup3 = rowgroup3.$element = $container.children('.rowgroup3');
+
+		//관광
+		var tour = rowgroup3.tour = {},
+			$tour = tour.$element = $rowgroup3.find('.tour'),
+			$tourList = tour.$list = $tour.find('.tour_list'),
+			$tourDots = tour.$dots = $tour.find('.tour_dots'),
+			$tourDotsWrap = tour.$dotsWrap = $tourDots.find('.wrap'),
+			$tourPrev = tour.$prev = $tour.find('.tour_prev'),
+			$tourNext = tour.$next = $tour.find('.tour_next');
+
+		$tourList.slick({
+			draggable : false,
+			swipe : false,
+			touchMove : false,
+			cssEase : 'linear',
+			speed : 250,
+			appendDots : $tourDotsWrap,
+			dotsClass : 'clearfix',
+			dots : true,
+			adaptiveHeight : true,
+			fade : true,
+			zIndex : 40,
+			prevArrow : $tourPrev,
+			nextArrow : $tourNext,
+			customPaging : function(slick, index) {
+				var $img = slick.$slides.eq(index).find('img');
+
+				return '<button type="button" style="background-image:url(\'' + $img.attr('src') + '\');"><span class="tour_dots_text">' + $img.attr('alt') + '</span></button>';
+			},
+			responsive : [{
+				breakpoint : 1001,
+				settings : {
+					draggable : true,
+					swipe : true,
+					touchMove : true,
+					swipeToSlide : true
+				}
+			}]
+		});
+	});
+})(window.jQuery);

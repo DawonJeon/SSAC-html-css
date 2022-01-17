@@ -1,0 +1,56 @@
+div.middle2 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-color: bisque;
+}
+
+div.wrap {
+    display: flex;
+}
+
+ div.wrapped1 {
+    width: 700px;
+}
+
+div.wrapped2 {
+    width: 300px;
+    margin: 0 0 0 30px;
+} 
+
+div.box {
+    background-color: white;
+    border-radius: 10px;
+    height: 350px;
+}
+
+div.top {
+    margin: 0;
+    padding: 0;
+}
+
+div.top1 {
+    height: 70px;
+    border-bottom: solid rgb(228, 220, 220);
+}
+
+div.top2 {
+    height: 150px;
+    border-bottom: solid rgb(243, 235, 235);
+    background-color: rgb(243, 235, 235);
+}
+
+div.top ul {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+div.top ul li {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 30px;
+
+}
+

@@ -1,0 +1,101 @@
+/**
+ * @author (주)한신정보기술 퍼블리셔팀 권정현
+ * @since 2019-03-18
+ * @version 1.0.0
+ */
+(function($) {
+	'use strict';
+
+	$(function() {
+		var header = tag.header,
+			$header = header.$element;
+
+		//gnb
+		var gnb = header.gnb = {},
+			$gnb = gnb.$element = $header.find('.gnb');
+
+		//외국어
+		var lang = gnb.lang = {},
+			$langBtn = lang.$btn = $gnb.find('.lang_btn');
+
+		$langBtn.on('click.common', function(event) {
+			var $this = $(this),
+				$langContent = $this.next('.lang_content');
+
+			//애니메이션이 끝났을 때
+			if(!$langContent.is(':animated')) {
+				$langContent.slideToggle(250, 'easeInOutExpo').parent('li').toggleClass('active');
+			}
+		});
+
+		//긴급공지
+		var popup = header.popup = {},
+			$popup = popup.$element = $('#popup'),
+			$popupBtn = popup.$btn = $('.popup_btn'),
+			$popupBtnText = $popupBtn.children = $('.popup_btn_text'),
+			displayCookie = getCookie("display");
+
+		if(displayCookie != "none"){
+			$popup.css("display", "block");
+			$popupBtn.addClass('active');
+			$popupBtnText.text('닫기');
+		}else{
+			$popup.css("display", "none");
+			$popupBtnText.text('열기');
+			$popupBtn.removeClass('active');
+		}
+		$popupBtn.off('click.layout').on('click.common', function(event) {
+			//애니메이션이 끝났을 때
+			if(!$popup.is(':animated')) {
+				var $this = $(this).toggleClass('active');
+				$popup.slideToggle(250, 'easeInOutExpo', function() {
+					var $popupBtnText = $this.children('.popup_btn_text');
+
+					//팝업이 열렸을 때
+					if($popup.css('display') != 'none') {
+						$popupBtnText.text('닫기');
+						setCookie("display", "block");
+						$this.addClass('active');
+					}else{
+						$popupBtnText.text('열기');
+						setCookie("display", "none");
+						$(this).removeClass("active");
+					}
+				});
+			}
+
+			event.preventDefault();
+		});
+	});
+})(window.jQuery);
+
+function setCookie(name, value)
+{
+    document.cookie = name+ "=" + escape( value );
+}
+
+function getCookie(name) {
+    var Found = false
+    var start, end
+    var i = 0
+
+    while(i <= document.cookie.length) {
+        start = i
+        end = start + name.length
+
+        if(document.cookie.substring(start, end) == name) {
+          Found = true
+          break
+        }
+        i++
+    }
+
+    if(Found == true) {
+    start = end + 1
+    end = document.cookie.indexOf(";", start)
+      if(end < start)
+        end = document.cookie.length
+    return document.cookie.substring(start, end)
+    }
+    return ""
+}
