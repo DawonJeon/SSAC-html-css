@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /*
+        float해제하는 방법 4가지!! 
+        면접 에서 매일 나오는 질문!!
+        */
+        .parent1{
+            border: 10px solid red;
+            overflow: hidden;
+        }
+        .parent1 div{
+            border: 5px solid blue;
+            height: 100px;
+            float: left;
+        }
+        /* float를 쓰면서 부모가 자식을 포함하지 못한다.
+        부모에서 빠져나간 자식들을 다시 부모에게 넣으려면?
+        방법 1) 부모한테 overflow
+        블럭요소 처럼 width값이 100프로로 잡힘*/
+
+        .parent2{
+            border: 10px solid green;
+            display: inline-block;
+            
+        }
+        .parent2 div{
+            border: 5px solid yellow;
+            height: 100px;
+            float: left;
+        }
+        /*display: inline-block은 
+        인라인 요소처럼 width값이 컨텐츠만큼만 잡힘 */
+
+        .parent3{
+            border: 10px solid orange;
+            float: left;
+            
+        }
+        .parent3 div{
+            border: 5px solid black;
+            height: 100px;
+            float: left;
+        }
+        /*부모한테도 float를 설정해준다. */
+
+        .parent4:after{
+            border: 10px solid pink;
+            content: '';
+            display: block;
+            clear: both;
+            
+        }
+        .parent4 div{
+            border: 5px solid purple;
+            height: 100px;
+            float: left;
+        }
+        /*
+        after는 인라인요소
+
+        display: block을 주어야 한다. 
+        after와 before을 쓸때는 content :''을 무조건 써야함 
+        content에 내용을 넣을수도 있다.
+        
+    */
+
+
+    
+    /*
+        ----------------clear: both 와 none의 차이점!!!!
+        2번째 자식요소**** --------- 
+        clear: both
+        
+        clearr: none
+        
+        */
+
+    </style>
+</head>
+<body>
+    <div class="parent1"> parent (overflow)
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
+    </div>
+
+    <div class="parent2"> parent (display)
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
+    </div>
+
+    <div class="parent3"> parent (float)
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
+    </div>
+
+    <div class="parent4"> parent (clearfix)
+        <div class="child">child1</div>
+        <div class="child">child2</div>
+        <div class="child">child3</div>
+    </div>
+</body>
+</html>
+
+<!--display와 float는 잘 안쓰임
+인라인 요소로 바뀌고 / 둘다 붕붕 떠져있으면 뒤에도 영향을 주기 때문에 
+
+보통은 clearfix나 overflow로 쓰는것이 정석 -->
+

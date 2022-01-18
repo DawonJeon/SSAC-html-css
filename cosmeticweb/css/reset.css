@@ -1,0 +1,152 @@
+@charset "utf-8"; 
+/* 두가지 방법이 있음         
+euc-kr은 우리나라 / utf-8은 세계공용*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+html, body, ul, li, div, header, section, footer, article, span, a, p, strong, h1, h2, h3, nav 
+form, img, input, button, label{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;  /*html의 font-size는 default값으로 16px 지정 되어있음/ font-size:100%지정하면 기본 16px지정 */
+}
+
+header, footer, section, article, nav{  /*html5의 약속 / header, footer, s,a,n는 display: block을 선언하고 시작하라. */
+    display: block;
+}
+
+/*display: none 처리를 하면 스크린 리더기가 못읽음
+display: none -- 스크린 리더기가 읽어야 하는 컨텐츠인지, 아닌지 먼저 파악해야하는게 중요함 
+display: block --인라인 요소를 블럭요소로 바꿀때 
+display: inline-block -- IE에서 안먹혀서 많이 안쓰였음 그동안. */
+
+html{
+    font-size: 12px;
+}
+/*
+letter-spacing:(글자간 사이) em단위로 쓰는것 권장
+px는 소수점 단위로 작업안함
+em은 소수점 단위로 작업가능(0.006) 미묘하게 자간 조절가능
+프론트엔드, 디자이너들이 아주 중요하게 생각하는 부분
+*/
+
+h1, h2, h3 {
+    /*font-size단위 : px, %, em, rem
+    px(직관적, 상속이 안됨), %(잘안씀), em,rem많이 씀
+    em(나의 부모가 기준이 됨, 부모값을 생각하면서 써야함/ 상속이 됨)
+    rem(r=root, 최상위, html에서 최상위는 html태그임. html의 폰트사이즈를 기준으로 바뀜. */
+    font-size: 1em;
+}
+
+ul, ol{
+    list-style: none;
+    /*list-style-type: none (둘다 가능) ,, 초기값 없도록 하는것*/
+}
+
+img, fieldset{
+    border: none;
+    /*
+    border: 0 none (이것도 맞음) 익스플로러 하이버전에서는 border:none값이 안 먹기 때문에
+    보통 업체에서는 border : 0 none을 같이 씀 //유지보수팀에서 일할시 이것 그대로 두기
+    border:0은 안됨 (2008년도 방식) */
+}
+
+/*
+img border값은 인터넷 익스플로러를 열면 선명하게 보임
+reset파일 만들때 fieldset을 넣는게 좋을듯*/
+
+a:link,
+/*link걸린 현재의 상태*/
+
+a:visited{
+    text-decoration: none; /*한번 방문했던곳 다시 뒤돌아갔을때 */
+    color: #222;
+}
+/*사용자가 한번 방문했던거*/
+a:hover,
+/*마우스를 올려놓은 상태*/
+a:active,
+/*사용자가 클릭하는 순간*/
+a:focus{
+    text-decoration: underline;
+    color: #07c;
+}
+/*사용자가 클릭하는 순간, active와 똑같
+다른점)
+장애우분들이 tab키로 이동하거나 선택할때 적용됨 */                  
+
+.skip{ /*우리눈에는 안보여야 하지만 스크린 리더기는 읽어야하는 클래스명*/
+    width: 1px; /*width:0 (0은 단위값 넣을필요없음, 0이상은 단위값 넣어야함)*/
+    height: 1px;
+    overflow: hidden; 
+    /*
+    컨텐츠가 넘었을때 숨기는 것 auto, scroll둘다 스크롤이 생김
+    차이점은 스크롤바가 생기냐 안생기냐 
+    auto는 내용이 작으면 스크롤바가 안생김
+    scroll은 내용이 작아도 스크롤바가 무조건 생김*/
+    line-height: 0; /*행간*/
+    font-size: 0; /*x -- 넣는 작업자가 있고 안넣는 작업자가 있음*/
+    position: absolute;
+    left: -9999px; /*나는 나의 부모를 기준으로 -9999px로 갖다 놀거야 . 화면밖으로 벗어나겠다는 뜻 . 화면 좌측 끝이 0px이므로
+    화면에서는 안보이지만 스크린 리더기는 읽게됨.*/
+    text-indent: -9999px; /*text-indent 는 글자 들여쓰기, text-indent: -9999px과 position:absolute & left: -9999px이 결과적으로 동일한 결과를 냄*/
+
+    /*텍스트 리더기는 읽지만 화면에서는 안보이는 방법 (for웹접근성)
+    1. position: absolute; & left : -9999px;
+    2. text-indent : -9999px;
+    */
+}
+
+/*웹접근성은 html의 명확한 태그가 중요하지 css는 웹접근성에 별 영향을 주지 않는다. */
+
+/*float - 모든 브라우저에서 사용 (레이아웃 배치시 사용) 회사에서 많이 쓰임
+float: left, float:right, float: none 세가지 가있음
+왼쪽으로 배치, 오른쪽으로 배치, 배치 안함?
+부모가 자식 요소들을 감싸지 않음(각각 떠있음)
+집나간 자식을 잡는법
+
+면접 볼때 자주나오는 질문(4가지 box.html참조)
+1) clearfix:after;
+2) overflow:hidden;
+3) display: inline;
+*/
+
+.clearfix:after{
+/*float해제하는 방법 */
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*tap하면 나오는 웹 접근성 '주메뉴 바로가기' 뜨도록 설정*/
+#skipNavi{
+    width: 100%;
+    position: relative;
+} 
+/*relative 자기자신이 기준.*/
+
+#skipNavi a{
+    position: absolute;
+    top: -100px;
+    text-decoration: none;
+}
+
+/*absolute 부모의 위치가 기준
+-값은 위로 올리므로 화면 밖으로 나감
+(왼쪽 위 모서리가 0,0 이므로 -값으로 빼면 화면 밖으로 나감).*/
+
+#skipNavi a:hover,
+#skipNavi a:active,
+#skipNavi a:focus{
+    position:absolute;
+    top:0;
+    width: 100%;
+    display: block;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*인라인 요소에는 width, height, margin, padding 안먹는다
+a태그는 인라인 요소이기 때문에 width값을 주려면 display:block해줘야함*/

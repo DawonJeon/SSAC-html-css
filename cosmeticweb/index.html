@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>화장품 페이지 with 강사님</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <!--div를 너무 많이 쓰면 접근성에 문제가 됨
@@ -18,11 +21,11 @@
     <div id="wrapper"> <!--전체를 둘러싸는 태그-->
         <header class="header"> <!--본래를 class이름이 header나 tag이름이면 안됨-->
             <aside class="headerIntro clearfix"> <!--aside 태그-->
-                <ul class="intro_quick_menu"> <!--ul/ol/dl택그 중에 ul/dl이 가장 많이 쓰임 -->
+                <ul class="intro_quick_menu aside_menu"> <!--ul/ol/dl택그 중에 ul/dl이 가장 많이 쓰임 -->
                     <li><a href="">즐겨찾기</a></li>
                     <li><a href="">바로가기</a></li>
                 </ul> <!--회사마다 코드적는 방법은 각자 다름 카멜케이스/_/-->
-                <ul class="intro_menu">
+                <ul class="intro_menu aside_menu">
                     <li><a href="">로그인</a></li>
                     <li><a href="">회원가입</a></li>
                     <li><a href="">마이페이지</a></li>
@@ -36,8 +39,10 @@
                     <label for="search" class="skip">
                         검색 <!--화면상에는 보이지 않지만 스크린 리더기가 읽음-->
                     </label>
-                    <input type="text" id="search" name="keyword" class="input_text"/> <!--label속 for의 값과 input의 id값이 반드시 같아야함/그래야지만 스크린 리더기가 읽을수 있음-->
+                    <input type="text" id="search" name="keyword" class="input_text"/> <!--label속 for의 값과 input의 id값이 반드시 같아야함/그래야지만 스크린 리더기가 읽을수 있음(스크린리더기가 읽는 것은 label의 "검색")-->
                     <button type="submit" class="search_btn close">제품검색</button> <!--button종류 type 전송버튼/취소버튼.. "제품검색"은 스크린리더기가 읽음-->
+                    <!--만약 input을 안쓰면 스크린리더기가 읽을수가 있도록 button 내부에 title="검색"추가 하면 되지만 웹 접근성이
+                    input태그와 button태그가 함께 오는게 훨씬 웹접근성이 훌륭하다. -->
                     <!--fieldset과 리젠드 - 관련된 성질들끼리 그룹화시키는것, 초기에는 필수였는데 현재는 선택 /작업자 선택 -->
                 </form> <!--name속성은 a,form.img태그에서만 넣을 수 있다. 다른 태그에서는 name속성을 쓰지 않는다. name쓰는 이유? script작업에서 쓰려고-->
             </div>
@@ -88,7 +93,7 @@
                 </ul>
             </nav>
         </header>
-
+<!--span은 블럭요소-->
         <section class="container" id=container>
             <section class="visual_wrap">
                 <h3 class="skip">메인배너</h3>  <!--html 5는 section h태그 안달면 경고메세지가 뜸-->
@@ -351,7 +356,7 @@
             <div class="footer_wrap">
                 <div class="footer_add clearfix">
                     <div class="add">
-                        <p class="add_1">(01234)서울시 구로구 디지털로 306(구로동)</p>               <!--html4까지는 adress를 무조건 씀/ html5부터는 p태그를 씀 -->
+                        <p class="add_1">(01234)서울시 구로구 디지털로 306(구로동)</p>               <!--html4까지는 adress를 무조건 씀/ html5부터는 p태그도 혼용하여 씀 -->
                         <p class="add_2">Tel:1599-9999 <a href="tel:02-1234-5678">전화클릭</a>Fzx:02-1234-5678</p>
                         <p class="add_3">Email:Natural@natural.co.kr</p>
                     </div>

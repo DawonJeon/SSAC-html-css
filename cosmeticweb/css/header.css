@@ -1,0 +1,297 @@
+@charset "utf-8";
+
+/*포트폴리오는
+경제활동이 아니므로 유료컨텐츠(사진,동영상)을 사용한다 하더라도
+저작권법에 걸리지 않는다.
+관공서나, 기업에서 이쁜 사진 있으면 그냥 포트폴리오에 쓰세요
+아이콘도 동일*/
+
+/*여백도 디자인
+눈이 휴식하는 공간이기 때문에 여백주는걸 무서워 하지마라
+너무 다다다닥 붙이는거 지양해야할 것*/
+
+#wrapper{
+    width: 100%;
+    position: relative;
+    min-width: 1920px; 
+}
+/*min-width를 안주면 화면이 과도하게 축소되었을때 해더가 꺠짐*/
+
+.header{
+    width: 100%;
+    position: relative;
+    background: url(../image/bg_top.gif) repeat-x 0 0;
+                /*image                   repeat    position*/
+                /*image                    repeat   position    background-color
+                image,repeat,position은 코딩 순서가 달라도 가능하나
+                background-color는 무조건 맨 뒤에나와야 먹힌다.*/
+}
+
+/*repeat-x : 가로로 반복/ repeat-y : 세로로 반복*/
+
+/* 코딩 순서가
+1) background 이미지
+2) background 컬러
+background컬러가 background 이미지 무조건 다음에 와야함  */
+
+/* 웹접근성 작업 안하는 곳 -쇼핑몰, 웹툰, 상시직원거주가 50명이하인 회사,  */
+
+.header .headerIntro{
+    width: 1200px; /*본인들거 무조건 1200px로 맞추세요*/
+    margin: 0 auto; /*은 상하 값, auto는 좌우값, auto하면 자동으로 중앙으로 감. */
+    position: relative;
+    height: 40px;
+    line-height: 40px; /*line-height(행간) 넣는이유? 세로로 center넣고 싶을때 높이가 60일때 lineheight60으로 지정하면 중앙으로 감*/
+}
+
+/*
+    인라인스타일(html태그에 스타일 바로 때려 박는것) :특정도 값이 높음 > 아이디선택자 > 클래스 선택자  > 태그
+            1000점                                                         100점        10점        1점
+
+    ex) #wrapper .header .headerIntro{}
+          100       10          10    =120점
+        .header .headerIntro{}
+            10      10  = 20점
+        특정도 값이 높은게 먹힌다. 
+        이때 특정도 값에 상관없이 20점 짜리를 우선하고 싶을때 !important를 준다
+        그러나 정말정말 방법이 없을때, 최악의 경우에만 쓸것, (지양해야하는 코딩스타일) 
+    외부 스타일(css에 스타일 작업하여 link 거는것)
+    작업을 하다가 안먹으면 우선순위를 볼것 
+
+    특정도값이 전체적으로 너무 높으면 사이트 유지, 보수가 힘드므로
+    너무 많은 class 적지 말것 
+    */
+
+    
+.intro_quick_menu{float: left}
+
+.intro_menu{float: right}
+
+.aside_menu li{
+    float: left;
+    padding-right: 10px;
+}
+
+/*
+{} 뒤에 ; 붙이니까 안먹힘
+{} 뒤에 아니라 {} 안에넣어야함.
+*/
+
+.aside_menu li:after{   
+     content: ':';
+     padding-left: 10px; /*조금 띄기 위해서 */
+}
+
+/* padding 10px을 한개는 after에 한개는 li에 준이유? */
+/* dom형식의 엘리먼트를 자세히 보면 li 오른쪽왼쪽 기준으로 준거임 */
+
+.aside_menu li:last-child:after {
+    content : '';
+    padding-left: 0;
+}
+
+
+.header_logo_wrap{
+    width: 1200px;
+    margin: 0 auto; /*margin: 0 auto는 자동으로 중앙정렬해주는거!!!어렵게 생각하지마!!!*/
+    height: 100px;
+    position: relative;
+}
+
+.header_logo_wrap h1{
+    text-align: center;
+}
+/*가급적이면 h에도 클래스명 넣을것*/
+
+/* 단순히 위치를 왼쪽이나 오른쪽으로 움직일때는 float:left 혹은 float:right
+반면, 컨텐츠가 대각선으로 올릴때는 position : absolute
+모든걸 position: absolute로 도배해놓으면 잘 꺠지기 때문에, 
+개발팀에서 짜증냄.
+
+그러니 컨텐츠위에 컨텐츠를 올릴떄(이미지위에 이미지를 올릴때)
+혹은 컨텐츠가 대각선으로 이동할때만 position: absolute 쓸것 */
+
+.header_logo_wrap .header_search{
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+
+.header_search .input_text{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #208dbe;
+    border: 0 none;
+    transition: width 0.5s ease-in-out;
+    /*                초      효과*/
+}
+
+.header_search .search_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    text-indent: -9999px;
+
+}
+/*컨텐츠 위에 컨텐츠를 올리는것은
+position: absolute*/
+
+.header_search .search_btn:before{
+    content: '';
+    width: 10px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 33px;
+    left: 30px;
+    transform: rotate(45deg);
+}
+/*돋보기 막대기에 해당하는 흰줄을 그려서 rotate해줘 각도를 돌린다. */
+
+.header_search .search_btn:after{
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    border:3px solid #fff;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+}
+/*hover*/
+/*hover
+애니메이션은 호버를 하기 전상태에 부여해야함*/
+
+.header_search:hover .input_text{
+    width: 300px;
+}
+
+/*부모에 마우스를 올렸을때
+input_text가 바뀐다는 말
+
+-애니메이션은 호버를 하기 전 상태에 부여하기 */
+
+.header_search:hover .search_btn{
+    display: none;
+}
+
+/* .header_search에 마우스를 올려노았을때 search_btn이 바뀌는 것 */
+
+
+.header_search:hover .close{
+    display: block;
+}
+
+/* .header_search에 마우스를 올렸을때 
+.search_btn (돋보기 모양)은 사라지고
+.close (X 모양)는 생겨나는 것 각각 설정해줌  */
+
+.header_search:hover .close:after{
+    content: '';
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    position: absolute;
+    top: 25px;
+    left:15px;
+    transform: rotate(-45deg);
+}
+
+.header_search:hover .close:before{
+    content: '';
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    position: absolute;
+    top: 25px;
+    left:15px;
+    transform: rotate(45deg);
+}
+
+
+.header .gnb_wrap{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+} 
+
+/* 제일먼저 코딩한게 제일 밑에 있다. 
+컨텐츠의 순서를 바꾸는 것 => z-index  */
+
+.gnb_wrap .gnb > li{
+    float: left;
+    height: 56px;
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 56px; /*height와 line-height에 동일한 값을 주면
+    위아래의 딱 정중앙에 위치시킬수 있다. */
+}
+
+/* >를 안하면 하위li전부에 먹힘
+>는 바로 밑의 자식에게만 적용 */
+
+
+/* header를 작업할때는 반드시 z-index
+z-index쓸때는 반드시 position설정해줘야함  */
+
+.gnb_wrap .gnb > li > a{
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #222;
+}
+
+/* 보통 회사에서 블랙 안씀 블랙대신에 222번 색상 사용  */
+/* display:block시 부모의 blcok값을 그대로 가져옴  */
+
+.gnb_wrap .gnb > li > a:after{
+    content: '';
+    width: 80px;
+    height: 5px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    transition: all 0.5s ease;
+    opacity: 0;
+    /*처음엔 안보임 = 즉, 마우스 올리기 전에는 안보임 */
+}
+/* after의 부모는 li가 아니라 a임 */
+
+/* 기억!!!! transition은 hover하기 이전에 넣는다!!!! */
+
+.gnb_wrap .gnb li:hover a:after{
+    top: 50px;
+    opacity: 1;
+}
+/* opacity의 범위 값은 0에서 1까지임  */
+
+.gnb li .gnb_deth2{
+    border-right: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    height: 250px;
+    background-color: #fff;
+    display: none;
+
+}
+
+.gnb li:first-child .gnb_deth2{
+    border-left: 1px solid #d9d9d9;
+}
+
+
+
+/* 선택자 이상한거 끌어오면끌어올수록 유지보수 힘들기에 class로 통일하는것 지향 */
