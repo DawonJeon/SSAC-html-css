@@ -390,9 +390,241 @@ float:left값을 설정하면
     position: absolute;
     bottom: 50px;
     left: 50%;
+    font-size: 0;
+    transform: translateX(-50%);
 }
-.contents_2 .banner_btn_arrow{
+/*left : 50%일때는 텍스트의 첫 시작이
+중간으로 가므로 정중앙으로 맞춰주려면
+transform: translateX(-50%)를 설정해줘야함
+그래야 정중앙으로 감
+
+위치를 %로 잡았을때는 무조건 translateX나 translateY로
+정중앙 자리시켜야 함*/
+
+.contents_2 .banner_btn_number a{
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 100%;
+    text-align: center;
+    margin-left: 10px;
+    text-indent: -9999px;
+}
+
+/*text-align은 텍스트의 중앙이 무조건 중앙으로 가니까 굳이 
+transform이 필요하지 않다*/
+
+/*A가 인라인요소이기 때문에 두가지 방법
+display: inline-block (공백생김, 부모에 fontsize:0)
+display: block(위아래로 정렬되기때문에, float:left설정)*/
+
+.contents_2 .banner_btn_number a.on{
+    background-color: #ffa500;
+    padding: 3px;
+}
+
+/* 
+  같은 태그내의 클래스를 호출할때는 .을 붙여서
+  자식 태그의 클래스를 호출할때는 .을 띄어써서 */
+
+
+.banner_btn_arrow .banner_btn{
     position: absolute;
     top: 50%;
-    
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-top: 1px solid #222;
+    border-left: 1px solid #222;
+    transform: translateY(-50%);
+}
+
+/*%로 위치 잡을경우 translateX, translateY로 
+위치 다시 잡아줘야한다. */
+
+.banner_btn_arrow .banner_btn a{
+    display: block;
+    text-indent: -9999px;
+}
+
+/*display: block을 안해주면
+text-indent가 먹히질 않는다. 반드시 
+display: block으로 블락요소로 바꿔줘야함. */
+
+.banner_btn_arrow .banner_btn_prev{
+    left: 30px;
+    transform: rotate(-45deg);
+}
+.banner_btn_arrow .banner_btn_next{
+    right: 50px;
+    transform: rotate(135deg);
+}
+
+.inquiry_wrap{
+    width: 100%;
+    height: 270px;
+    text-align: center;
+    margin: 50px 0 ;
+    background: url(../image/bg_main_banner04.png) repeat 0 0;
+    background-color: rgba(11,67,90,0.5);
+    /*background img와 background-color순서는
+    무조건 img가 먼저 나와야함*/
+    position: relative;
+}
+
+/*
+text-align 은 본인뿐만 아니라 자식요소들을 center로 정렬함
+그래서 보통 컨텐츠를 일괄적으로 중앙으로 정렬시키고 싶을때, 
+모든 컨텐츠를 포함하는 태그에 text-align:center를 걸면 
+자식요소들 모두 중앙으로 움직인다. */
+
+.inquiry_wrap:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../image/bg_main_banner04.jpg) no-repeat center top fixed;
+    /*background에 fixed추가로 고정시킴*/
+    z-index: -1;
+}
+/*z인덱스로 그림을 가장 밑으로 보낼때는 -1만 쓴다
+-1이 제일 작은 값. -2,-3,-4,,,,같은 것은 없음! */
+
+/*width:100%일때 사진은 3000px이상된 큰 사진을 가져오기*/
+
+
+.inquiry_wrap .inquiry_cont{
+    color: #fff;
+    padding: 50px 0;
+    box-sizing: border-box;
+
+}
+
+
+.inquiry_wrap .inquiry_cont p{
+    font-size: 38px;
+
+}
+/*컬러설정하면 자식요소인 p태그는 컬러가 변경되나
+a태그는 같은 자식이라고 컬러가 변경되지 않는다.
+a태그는 부모요소에 잡아도 변경되지 않으니 정확하게 집어주어야 한다. */
+.inquiry_wrap .inquiry_cont a{
+    text-decoration: none;
+}
+
+.inquiry_wrap .inquiry_cont .inquiry_more{
+    color: #fff;
+    width: 250px;
+    height: 50px;
+    background-color: rgba(255,255,255,0.3);
+    display: inline-block;
+    border-radius: 30px;
+    line-height: 50px;
+    font-size: 20px;
+    margin-top: 50px;
+    /*세로로 중간으로 넣을때는 무조건
+    line-height: height값(50px)*/
+}
+
+.inquiry_wrap .inquiry_cont a:hover .inquiry_more{
+    background-color: rgba(11,67,90,1);
+}
+
+.product_wrap {
+    width: 1200px;
+    margin: 50px auto; /*위에 여백을 줄때 marginrkqtdp 50px, auto를 준다!*/
+}
+
+.product_list{}
+.product_list li{
+    float: left;
+    width: 285px;
+    height: 285px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.product_list li:last-child{
+    margin-right: 0;
+}
+
+.product_list li .sale{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-color: #07c;
+    color: #fff;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 40px;
+
+}
+
+.product_list > li > a > img{
+    width: 285px;
+    height: 285px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+
+.product_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 285px;
+    height: 285px;
+    opacity: 0;
+    /*이것이나
+    top : 
+    bottom :
+    left :
+    bottom :
+    동일한 효과;;*/
+}
+.product_list > li:hover .product_box{
+    background-color: rgba(0,0,0,0.3);
+    padding: 30px;
+    box-sizing: border-box;
+    opacity: 1;
+}
+
+/*마우스 올렸을때만 나타나는 효과 보고 싶으면
+마우스 올리기전 opacity:0
+마우스 올릴때 opacity:1을 줌*/
+.product_box .product_title{
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+
+.product_box .product_btn{
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+    font-size: 0;
+}
+
+.product_box .product_btn a{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(11,67,90,1) ;
+    border-radius: 5px;
+    text-align: center;
+    /* line-height: 60px;  이미지라서 중앙으로 안감 */
+    margin-right: 10px;
+}
+
+.product_box .product_btn a:last-child{
+    margin-right: 0;
 }
