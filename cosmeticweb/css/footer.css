@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+.footer{
+    width: 100%;
+    position: relative;
+    margin-top: 50px;
+    height: 200px;   
+}
+
+.footer_menu_wrap{
+    border-top: 1px solid #999;
+}
+.footer_menu_wrap .footer_menu{
+    width: 1200px;
+    margin: 0 auto;
+    height: 50px;
+    box-sizing: border-box;
+    /*총 1200px중에서 
+    box-sizing: borderbox했으므로
+    2px을 안쪽에서 잡는다
+    따라서 총 
+    width: 1998px가 됨 */
+}
+
+/*border-left와 border-right가 각각 1px씩
+총 1202px이 되므로
+1200px로 맞추려면
+box-sizing:border-box; 넣어야함.
+만약 일일이 설정이 귀찮으면
+reset.css에 box-sizing:border-box 넣어주기 */
+
+.footer_menu_wrap .footer_menu li{
+    float: left;
+    width: 240px;
+    text-align: center;
+    line-height: 50px;
+    box-sizing: border-box;
+}
+/*li 태그에 border-box를 잡으면 li태그 안쪽에서 
+라인을 잡는다. */
+.footer_menu_wrap .footer_menu li:first-child{
+    border-left: 1px solid #999;
+}
+
+.footer_menu_wrap .footer_menu li:last-child{
+    border-right: 1px solid #999;
+}
+/*첫번째 박스는 border-left 1px를 포함해서 240px이 되고
+마지막 박스는 border-right 1px를 포함해서 240px이 되고
+중간의 박스들은 px없이 240px이 된다*/
+
+.footer_wrap{
+    width: 100%;
+    background-color: rgba(15,13,13);
+    height: 150px;
+}
+
+.footer_add{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.footer_add .add{
+    color: #fff;
+    float: left;
+    line-height: 2;
+}
+.footer_add .add a{
+    color: #ff0;
+}
+.footer_add .footer_banner{
+    float: right;
+    width: 200px;
+}
+
+.footer_add .footer_banner li{
+    float: left;
+}
+
+

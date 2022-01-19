@@ -537,7 +537,7 @@ a태그는 부모요소에 잡아도 변경되지 않으니 정확하게 집어�
 
 .product_wrap {
     width: 1200px;
-    margin: 50px auto; /*위에 여백을 줄때 marginrkqtdp 50px, auto를 준다!*/
+    margin: 50px auto; /*위에 여백을 줄때 margin: 50px, auto를 준다!*/
 }
 
 .product_list{}
@@ -621,10 +621,83 @@ a태그는 부모요소에 잡아도 변경되지 않으니 정확하게 집어�
     background-color: rgba(11,67,90,1) ;
     border-radius: 5px;
     text-align: center;
-    /* line-height: 60px;  이미지라서 중앙으로 안감 */
+    /* line-height: 60px;  이미지라서 중앙으로 안감
+    그렇다면 어떻게 할것인가?????
+    이미지를 중앙으로 내려야 하는데
+    padding-top과
+    box-sizing:border-box이용 중앙으로 설정  */
     margin-right: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: 0.5s ease;
 }
 
 .product_box .product_btn a:last-child{
     margin-right: 0;
+}
+
+/*순서대로 나오게하려면 애니메이션
+하나씩 순서대로면 : transition-delay를 사용 */
+.product_list > li:hover .product_btn a:nth-of-type(1){
+    opacity: 1;
+    transition-delay: 0.1s;
+
+}
+.product_list > li:hover .product_btn a:nth-of-type(2){
+    opacity: 1;
+    transition-delay: 0.3s;
+}
+.product_list > li:hover .product_btn a:nth-of-type(3){
+    opacity: 1;
+    transition-delay: 0.6s;
+}
+
+.quick_menu_wrap{
+    width: 1200px;
+    margin: 50px auto;
+
+}
+.quick_menu_wrap .quick_menu{}
+.quick_menu_wrap .quick_menu li{
+    float: left;
+    width: 220px;
+    height: 130px;
+    margin-right: 25px;
+    background-color: #07c;
+    text-align: center;
+    line-height: 130px;
+    border-radius: 5px;
+}
+
+.quick_menu_wrap .quick_menu li:last-child{
+    margin-right: 0;
+}
+
+.quick_menu_wrap .quick_menu li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    display: block;
+
+}
+
+.quick_menu_wrap .quick_menu li a:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0,0,0,0.2);
+    transition: all 0.5s ease;
+}
+
+/*애니메이션은 
+호버하기 전의 대상에게 넣는다 */
+.quick_menu_wrap .quick_menu li:hover a:after{
+    content: '';
+    width: 0;
 }
