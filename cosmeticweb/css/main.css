@@ -69,7 +69,7 @@ transform: translateX(-50%)
     margin-left: 0;
 }
 
-/*display: inline-block을 쓰면 옆으로 배열은 되지나
+/*display: inline-block을 쓰면 옆으로 배열은 되지만
 원하지 않은 공백이 필수불가결 생김
 그때는 부모 엘리먼트에
 font-size: 0을 해주면 공백 사라지고
@@ -147,3 +147,252 @@ float:left값을 설정하면
 남자중에 몇번쨰
 .visual li:nth-child(1)
 남자여자남자여자남자여자중에 몇번째 */
+
+/* 
+웹사이타 상에 그림 넣을때 기준 (소수자를 생각하면서- 모든 사용자 맞춤 )
+스크린리더기가 읽어야 하면 1) img 처리 / 2) 안읽어도 되면 background처리 하면됨 */
+
+
+.content_wrap{
+    width: 1200px;
+    margin: 50px auto;
+    position: relative;
+}
+
+/*padding은 안쪽 내용에 영향을 주기 때문에 margin처리를 해야 컨텐츠 영향 없이 공백처리 가능 */
+.content_wrap .contents_1{
+    float: left;
+    width: 770px;
+}
+
+
+/*굳이 float:left , float:right할 필요없이
+둘다 left주고 width값만 잘 계산하면 된다. */
+
+.contents_1 .cont_div1{}
+
+.cont_div1 .company{
+    width: 385px;
+    float: left;
+    height: 250px;
+    background: url(../image/main_banner01.jpg) no-repeat 0 0;
+    background-size: cover;
+    position: relative;
+
+}
+
+.cont_div1 .company:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* --------------------------------------
+    이렇게 굳이 넓이 지정안해주고도
+    top,left,right,bottom 위치만 지정해주면
+    부모의 넓이로 부터 (100%, 100% 동일하게 만들어짐) 
+    width: 100%, height:100과 같은 의미이다*/
+    background-color: rgba(0,0,0,0.3);
+}
+
+.cont_div1 .company a,
+.cont_div1 .product_cont a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    padding: 80px 30px 20px; /*위, 좌우, 하*/
+    text-decoration: none;
+    background: url(../image/icon_main_banner01.png) no-repeat center 20px;
+    /*background위치설정은 backgroun 맨 뒤에 넣으면됨, center 20px*/
+    box-sizing: border-box;
+}
+/*z-index는 position과 무조건 같이 써야함!!*/
+
+.cont_div1 .cont_h3{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5); /*x축, y축*/
+}
+/*margin이 먹히는 것 보니 h는 블럭요소인듯?*/
+
+.cont_div1 .cont_text{
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+
+}
+
+.cont_div1 .product_cont{
+    width: 385px;
+    float: left;
+    height: 250px;
+    background-color: #bcbcbc;
+}
+
+
+.cont_div1 .product_cont a{
+    background: url(../image/icon_main_banner02.png) no-repeat center 20px;
+}
+ 
+.product_cont .cont_h3{
+    color: #222;
+}
+
+ 
+.product_cont .cont_text{
+    color: #222;
+}
+
+.cont_div2 .customer{
+    width: 385px;
+    /* width: 384px (box-sizing:borderbox가 없는 하위요소 컴퓨터일경우) */
+    height: 250px;
+    /* height: 249px (box-sizing:borderbox가 없는 하위요소 컴퓨터일경우) */
+    float: left;
+    background-color: #fff;
+    border-left: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9; /*1px씩 늘어나서 총 386px 256px이 됨
+    따라서 box-sizing:border-box(css3)를 씀*/
+    box-sizing: border-box; 
+    /*box-sizing:borderbox가 없는 사이트는 어떻게 할거냐?
+    width: 382px;
+    height:249px;로 줌
+    box-sizing:border-box; 안먹히는 브라우저는 px단위로 계산해야함 */
+    padding: 30px;
+    text-align: center;
+    /*부모의 text-aligh:center적용시 자식요소도 center로 적용됨!*/
+}
+
+.cont_div2 .cont_div_h3{
+    font-size: 30px;
+}
+
+.customer .tell{
+    display: block;
+    font-size: 38px;
+    margin: 20px 0 30px 0;
+}
+
+.customer span{
+    font-size: 14px;
+     line-height: 1.5; /*px, %, em모두 들어갈 수 있는데
+    해당하는 폰트의 1.5배라는 뜻*/
+}
+
+.cont_div2 .notice{
+    width: 385px;
+    height: 250px;
+    float: left;
+    background-color: #f1f1f1;
+    position: relative;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.notice .notice_list{
+    text-align: left;
+    margin-top: 20px;
+}
+.notice .notice_list li{
+    line-height: 2.5; /*line-height는 단위넣지 말것
+    (항상 폰트사이즈 기준으로 
+    단위가 없을때 1미만이면 서로 붙는다.
+    line-height는 font-size보다 항상 커야한다~~!!
+    
+    만약 단위로 px를 줬는데
+    font-size:10px, line-height:8px ->글자가 서로 붙음
+    font-size:10px, line-height: 0.8 -> 글자가 서로 붙음
+    */
+    font-size: 14px;
+    border-bottom: 1px dotted #d9d9d9;
+}
+.notice .more{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+/*vw,vh는 아직 우리나라에서 대중화가 안됨
+외국에서는 많이 사용.*/
+
+.content_wrap .contents_2{
+    float: left;
+    width: 430px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    /*사진 1개만 보이고 나머지는 다 숨겨짐 */
+}
+
+/* ----------------------
+그림 슬라이딩으로 바꾸려고 할때 세가지 방법
+
+1)
+가로로 나란히 배치후 하나만 보이고
+나머지 두개는 overflow : hidden
+-> 옆으로 슬라이딩으로 바뀜
+
+2)
+세개를 모두 한자리에 포개놓음
+(position:absolute를 줘서)
+-> 옆으로 슬라이딩도 가능하고 자리에서 바뀌는 것도 가능 
+
+3)
+세로로 나란히 배치구 하나만 보이고
+나머지 두개는 overflow:hidden
+->옆으로 슬라이딩은 안됨
+그자리에서 바뀔때
+
+두개가 동시에 슬라이딩으로 바뀌면 사이트가 정신없으므로
+만약 그림바꾸기 두개이상 주면 방법을 다르게 하기!
+*/
+.contents_2 .contents_banner{}
+.contents_2 .contents_banner li{
+    width: 430px;
+    height: 500px;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.contents_2 .contents_banner li a{
+    text-decoration: none;
+}
+
+.contents_banner .cont_banner_title{
+    font-size: 32px;
+    display: block;
+    margin-bottom: 30px;
+}
+.contents_banner .cont_banner_text{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.contents_2 .contents_banner li:nth-of-type(1){
+    background: url(../image/main_banner03_1.jpg) no-repeat 0 bottom;
+}
+
+.contents_2 .contents_banner li:nth-of-type(2){
+    background: url(../image/main_banner03_1.jpg) no-repeat 0 bottom;
+}
+
+.contents_2 .contents_banner li:nth-of-type(3){
+    background: url(../image/main_banner03_1.jpg) no-repeat 0 bottom;
+}
+.contents_2 .banner_btn_number{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+}
+.contents_2 .banner_btn_arrow{
+    position: absolute;
+    top: 50%;
+    
+}

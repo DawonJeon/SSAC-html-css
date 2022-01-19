@@ -122,6 +122,7 @@ float: left, float:right, float: none 세가지 가있음
 #skipNavi{
     width: 100%;
     position: relative;
+    z-index: 9999;
 } 
 /*relative 자기자신이 기준.*/
 

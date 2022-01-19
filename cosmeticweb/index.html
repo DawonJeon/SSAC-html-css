@@ -39,10 +39,12 @@
                     <label for="search" class="skip">
                         검색 <!--화면상에는 보이지 않지만 스크린 리더기가 읽음-->
                     </label>
-                    <input type="text" id="search" name="keyword" class="input_text"/> <!--label속 for의 값과 input의 id값이 반드시 같아야함/그래야지만 스크린 리더기가 읽을수 있음(스크린리더기가 읽는 것은 label의 "검색")-->
+                    <input type="text" id="search" name="keyword" class="input_text"/> 
+                    <!--label과 input을 같이 넣으면 자동으로 text도 클릭가능하게 됨 -->
+                    <!--label속 for의 값과 input의 id값이 반드시 같아야함/그래야지만 스크린 리더기가 읽을수 있음(스크린리더기가 읽는 것은 label의 "검색")-->
                     <button type="submit" class="search_btn close">제품검색</button> <!--button종류 type 전송버튼/취소버튼.. "제품검색"은 스크린리더기가 읽음-->
-                    <!--만약 input을 안쓰면 스크린리더기가 읽을수가 있도록 button 내부에 title="검색"추가 하면 되지만 웹 접근성이
-                    input태그와 button태그가 함께 오는게 훨씬 웹접근성이 훌륭하다. -->
+                    <!--만약 input을 안쓰면 스크린리더기가 읽을수가 있도록 input 내부에 title="검색"추가 하면 되지만 웹 접근성이
+                    input태그와 label태그가 함께 오는게 훨씬 웹접근성이 훌륭하다. -->
                     <!--fieldset과 리젠드 - 관련된 성질들끼리 그룹화시키는것, 초기에는 필수였는데 현재는 선택 /작업자 선택 -->
                 </form> <!--name속성은 a,form.img태그에서만 넣을 수 있다. 다른 태그에서는 name속성을 쓰지 않는다. name쓰는 이유? script작업에서 쓰려고-->
             </div>
@@ -116,7 +118,7 @@
                             <div class="text_wrap">
                                 <strong class="visual_title">아름다움<span>을 창조하는 기업</span></strong> 
                                 <span class="visual_text">
-                                    고객의 행복한 뷰티스타일을 만들고<br/>
+                                    고객의 행복한 뷰티N스타일을 만들고<br/>
                                     지역사회와 함께 발전하는 국민기업이 되겠습니다
                                 </span>
                                 <span class="visual_btn_our">Our Services</span>
@@ -149,8 +151,8 @@
                     <div class="cont_div1 clearfix">
                         <div class="company">
                             <a href="">
-                                <h3>COMPANY</h3>
-                                <p>고객의 행복한 뷰티 스타일을 만들고 <br/>
+                                <h3 class="cont_h3">COMPANY</h3>
+                                <p class="cont_text">고객의 행복한 뷰티 스타일을 만들고 <br/>
                                 지역사회와 함께 발전하는 <br/>
                                 국민기업이 되겠습니다.
                             </p> <!--strong이나 span태그 안에 p 못넣음 오로지 a태그 안에만 블럭태그p넣을 수 있음. -->
@@ -158,8 +160,8 @@
                         </div>
                         <div class="product_cont">
                             <a href="">
-                                <h3>PRODUCT</h3>
-                                <p>고객의 행복한 뷰티 스타일을 만들고 <br/>
+                                <h3 class="cont_h3">PRODUCT</h3>
+                                <p class="cont_text">고객의 행복한 뷰티 스타일을 만들고 <br/>
                                 지역사회와 함께 발전하는<br/>
                                 국민기업이 되겠습니다.
                                 </p> 
@@ -168,13 +170,13 @@
                     </div>
                     <div class="cont_div2 clearfix">
                         <div class="customer">
-                            <h3>고객센터</h3>
+                            <h3 class="cont_div_h3">고객센터</h3>
                             <strong class="tell">031&middot;1234&middot;5678</strong> <!--가운데점을 뜻하는 태그 &middot-->
                             <span><span>상담</span>오전9시~오후6시(토,일요일 공휴일 휴무)</span><br/> <!--의미가 중요해서 강조하고 싶으면 strong태그 / 텍스트가 아무의미없지만 굵은 굵자 b태그, Css로 처리하는게 나음-->
                             <span><span>점심</span>오후12시~오후1시30분</span>
                         </div>
                         <div class="notice">
-                            <h3>공지사항</h3>
+                            <h3 class="cont_div_h3">공지사항</h3>
                             <ul class="notice_list">
                                 <li><a href="">Natural공지사항 입니다.</a></li>
                                 <li><a href="">Natural공지사항 입니다.</a></li>
