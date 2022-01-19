@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="skipMenu">
+        <a href="#container">본문바로가기</a>
+        <a href="#gnb">주메뉴바로가기</a>
+    </div>
+    <div id="wrapper">
+        <header class="header_group">
+            <div class="info_header"><!------------------info_header start --------------------->
+                <h1 class="h1_logo">KIOST</h1>
+                <nav class="menu_tab">
+                    <ul>
+                        <li>
+                            <a href="" class=mtbm mtbm_on>KIOST<>ABOUT</span></a>
+                        </li>
+                        <li>
+                            <a href="" class=mtbm >연구<span>RESEARCH</span></a>
+                        </li>
+                        <li>
+                            <a href="" class=mtbm >교육<span>EDUCATION</span></a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="site_search">
+                    <form method="post" name="seachfrm" class="search">
+                        <!-- input넣을때는 form태그를 안넣어주면 정보가 백단으로 안넘어감
+                        항상 input과 form은 세트이다. 
+                        method(정보날리는 방법) = get/post
+                        name은 자바스크립트 짤때 사용
+                        input type="img"
+                        butoon-->
+
+
+                        <!-- fieldset과 리젠드는 넣어고 되고 안넣어도되고(요즘은 잘 안 넣음)--> -->
+                        <input type="text" class="input_val" name="inval" placeholder="검색어 입력"/>
+                        <!-- <input type="text" class="input_val" name="inval" value="검색어 입력"/> -->
+                        <input type="submit" value="검색"/>
+                        <!--placeholder란? 텍스트 입력하기 직전까지 박스안을 채우는 컨텐츠/텍스트를 쓰기 시작하면 없어짐
+                            value는? 텍스트를 입력해도 속성값이 없어지지 않음 (자바스크립트 에서 없어지도록 설정해줘야함. )
+                            placeholder익스 상위버전에서 안먹힘.  -->
+                    </form>
+                </div>
+            </div><!------------------info_header end -------------------->
+
+
+            <div class="header_navi"> <!--width:100% 파란색으로 효과주기 위해서-->
+                <div class="nav_wrapper"> <!--width:1240px해서 center정렬하기 위해서-->
+                    <div class="hm_wrap">
+                        <a href="" class="hm_home">HOME</a>
+                        <a href="" class="hm_eng" target="_blank" title="새창">ENGLISH</a>
+                        <!--새창으로 사이트를 여는 것 = "target="_blank"
+                        스크린 리더가 읽는건 a태그 안에 title="새창"임
+                        targer="self"는 디폴트값이기 때문에 안쳐도됨(현재 창이 바뀌면서 열리는 것)-->
+                    </div>
+                    <nav class="deth_1">
+                        <ul>
+                            <li>
+                                <a href="">정보공개</a>
+                            </li>
+                            <li>
+                                <a href="">소식</a>
+                            </li>
+                            <li>
+                                <a href="">참여</a>
+                            </li>
+                            <li>
+                                <a href="">소개</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="hm_link_wrap">
+                        <a href="" class="hm_link"><span>연구사업</span></a>
+                        <a href="" class="hm_sitempa">
+                            <span class="skip">사이트맵바로가기</span> <!--스크린리더기 읽으라고 삽입-->
+                            <span class="figer">
+                                <span class="bar">1</span>
+                                <span class="bar">2</span>
+                                <span class="bar">3</span> <!--실제작업할때는 1,2,3 넣지 마세요. 연습이고 직관적 확인을 위해서 넣습니다. -->
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav id="gnb" class="sub_menu"> <!--100%처리 할 곳-->
+                <div class="animate"> <!--1240px로 센터정리 할 곳 -->
+                    <div class="title">
+                        <h2 class="ti">NEWS &amp; ISSUE</h2> <!--&amp; 는 & // 특수문자도 전부 태그로 작업해야함.-->
+                        <p class="text">해양과학 기술의 글로벌 리더 KIOST 기관 소개 및 뉴스 &amp; 이슈를 안내해 드립니다. </p>
+                        <p class="btn_text">
+                            <a href="">메인바로가기</a>
+                        </p>
+                    </div>
+
+                    <ul class="tm">
+                        <li class="th1">
+                            <a href="" class="link_1th">정보공개</a>
+                            <ul>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="th1">
+                            <a href="" class="link_1th">소식</a>
+                            <ul>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="th1">
+                            <a href="" class="link_1th">참여</a>
+                            <ul>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="th1">
+                            <a href="" class="link_1th">소개</a>
+                            <ul>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                                <li><a href="">정보공개제도안내</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="gnb_link">
+                        <a href="">
+                            <span class="icon_gnb icon1">오시는 길</span>
+                        </a>
+                        <a href="">
+                            <span class="icon_gnb icon2">사이버투어</span>
+                        </a>
+                        <a href="">
+                            <span class="icon_gnb icon3">온라인사보</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+
+
+
+        <div class="container" id="container">
+
+        </div>
+        <footer class="footer-group">
+
+        </footer>
+    </div>
+</body>
+</html>
