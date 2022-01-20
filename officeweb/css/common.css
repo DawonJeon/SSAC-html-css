@@ -1,0 +1,45 @@
+@charset "utf-8";
+/*
+모든 회사에서 common.css파일을 굉장히 중요하게 본다. 
+common.css파일에는 매 페이지마다 반복되는 요소를 넣는다
+예를 들어, 
+폰트크기, 폰트색상, 
+서브페이지가 버튼이 모두 동일할 때 버튼,
+글자간 여백이 동일하게 반복될 때,
+float:left, right에서 float해제,
+컨텐츠 정렬(센터) 반복적으로 적용시,
+*/
+
+.fl{float: left;}
+.fr{float: right;}
+.fn{float: none;}
+
+/*우리가 float적용 원할때 픽해서 삽입만 하면 됨*/
+
+.tal{text-align: left;}
+.tar{text-align: right;}
+.tac{text-align: center;}
+
+
+.mt5{margin-top: 5px;}
+.mt10{margin-top: 10px;}
+.mt15{margin-top: 15px;}
+.mt20{margin-top: 20px;}
+
+
+.mr5{margin-right: 5px;}
+.mr10{margin-right: 10px;}
+.mr15{margin-right: 15px;}
+.mr20{margin-right: 20px;}
+
+
+.mb5{margin-bottom: 5px;}
+.mb10{margin-bottom: 10px;}
+.mb15{margin-bottom: 15px;}
+.mb20{margin-bottom: 20px;}
+
+
+.ml5{margin-left: 5px;}
+.ml10{margin-left: 10px;}
+.ml15{margin-left: 15px;}
+.ml20{margin-left: 20px;}

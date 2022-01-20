@@ -5,26 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/kiostMain.css"/>
 </head>
 <body>
     <div id="skipMenu">
         <a href="#container">본문바로가기</a>
-        <a href="#gnb">주메뉴바로가기</a>
+        <a href="#gnb">주메뉴바로가기</a> <!--모든 서브페이지에 다 넣어야함-->
     </div>
     <div id="wrapper">
         <header class="header_group">
-            <div class="info_header"><!------------------info_header start --------------------->
+            <div class="info_header">   <!-- info_header start -->
                 <h1 class="h1_logo">KIOST</h1>
                 <nav class="menu_tab">
                     <ul>
                         <li>
-                            <a href="" class=mtbm mtbm_on>KIOST<>ABOUT</span></a>
+                            <a href="" class="mtbm mtbm_on">KIOST<span>ABOUT</span></a>
                         </li>
                         <li>
-                            <a href="" class=mtbm >연구<span>RESEARCH</span></a>
+                            <a href="" class="mtbm" >연구<span>RESEARCH</span></a>
                         </li>
                         <li>
-                            <a href="" class=mtbm >교육<span>EDUCATION</span></a>
+                            <a href="" class="mtbm" >교육<span>EDUCATION</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -163,17 +165,560 @@
                     </div>
                 </div>
             </nav>
-
         </header>
 
 
-
-
         <div class="container" id="container">
+            <section class="mvisual"> <!--100% 영상처리-->
+                <div class="bg_area">
+                    <div class="fullbox">
+                        <iframe src="https://www.youtube.com/embed/ZcARG39KU-s" title="한국해양기술원홍보영상" allowfullscreen style="width: 100%; height: 800px; margin-top: 0; margin-left: 0; padding: 0;"></iframe>
+                    </div> <!--iframe태그 안에 title="" 부분을 스크린 리더기가 읽으므로 수정안하면 안된다 / 
+                        frameborder= 프레임 / 인라인스타일 = html태그안에 style속성값을 넣어서 css를 바로 설정하는 것 (적합도점수가 가장 높음)
+                        현재 iframe 태그 내에 인라인 스타일 적용했음.
+                        width: 100%는 height:800px에 대비한 100%로 적용되는 것  -->
+                    <div class="pattern_bg">
+
+                    </div>
+                </div>
+
+                <h2>KIOST는 과학기술로 바다를 재발견해 나갑니다. 더 안정하게 더 넓게 더 가치있게</h2>
+
+                <article class="obj">
+                    <div class="item_group">
+                        <div class="item">
+                            <a href="#">
+                                <span class="imgpop"><img src="images/POP_201807240948410750.jpg" alt=""/></span>
+                                <span class="grid_content">
+                                    <em>KIOST부산 신청사 개청 글로벌 비전선포식 개최</em>
+                                    <span class="btn">MORE</span>
+                                </span>
+                                <!--본래 버전에서 a태그안에서는 블럭요소 못넣으나 <!DOCTYPE html>로 선언된 경우에만 a태그안에 블럭요소 넣을 수 있음 -->
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <span class="imgpop"><img src="images/POP_201807240953133850.jpg" alt=""/></span>
+                                <span class="grid_content">
+                                    <em>KIOST부산 신청사 개청 글로벌 비전선포식 개최</em>
+                                    <span class="btn">MORE</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <span class="imgpop"><img src="images/POP_201807271033447510.jpg" alt=""/></span>
+                                <span class="grid_content">
+                                    <em>KIOST부산 신청사 개청 글로벌 비전선포식 개최</em>
+                                    <span class="btn">MORE</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <span class="imgpop"><img src="images/POP_201807310907392700.jpg" alt=""/></span>
+                                <span class="grid_content">
+                                    <em>KIOST부산 신청사 개청 글로벌 비전선포식 개최</em>
+                                    <span class="btn">MORE</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="control1">
+                        <a href="#">이전보기</a>
+                        <a href="#">멈춤</a>
+                        <a href="#">실행</a>
+                        <a href="#">다음</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="popup_zone"><!--팝업존-->
+                <h2>
+                    <span>POPUP<br/>ZONE</span>
+                    <span class="ir_kiost aram"></span> <!--span태그내부에 아무내용도 없으므로 스크린리더기가 읽는게 없음-->
+                </h2>
+                <div class="popup_grep">
+                    <ul class="popup_obj">
+                        <li class="popup_item"><a href="">국민참여 청렴 콘텐츠 공모전</a></li> <!--롤링되는건 제이쿼리에서 구현-->
+                        <li class="popup_item"><a href="">국민참여 청렴 콘텐츠 공모전</a></li>
+                    </ul>
+                </div>
+                <div class="popup_control">
+                    <span><span class="count">1</span>/2</span> <!--자바스크립트로 구현해서 롤링되면 숫자가 바뀌도록-->
+                    <a href="" class="ir_kiost prev">popup이전보기</a> <!--ir_kiost 클래스로는 아이콘 그림을 쓸거고, prev 클래스로는 위치를 설정할 예정-->
+                    <a href="" class="ir_kiost prev">popup정지</a>
+                    <a href="" class="ir_kiost prev">popup실행</a>
+                    <a href="" class="ir_kiost prev">popup다음보기</a>
+                </div>
+
+            </section>
+            <div class="mbgwap"> <!--뉴스 ~ 배너-->
+                <section class="section_box1 clearfix"> <!--뉴스 보도자료-->
+                    <article class="mbox">
+                        <h2>NEWS</h2>
+                        <ul class="news">
+                            <li class="title_ti2"><a href="" class="over">공지</a>
+                                <div class="obj">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <span>공지</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a> <!--클릭되어야 할 곳은 a태그 내부에 span-->
+                                            <span class="data"> 2022.01.20</span> <!--클릭이 안되어도 되는 날짜는 바로 span태그 내부에-->
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>공지</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>공지</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>공지</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>공지</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+                                    </ul>
+                                    <!--버튼넣을때는 p로 해도 되고 span으로 해도됨-->
+                                    <p class="more"><a href="" class="ir_kiost">공지더보기</a></p>
+                                </div>
+                            </li> <!--li 태그내부에서 다시 ul>li 그룹을 만든다-->
+
+                            <li class="title_ti2"><a href="" >채용</a>
+                                <div class="obj">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <span>채용</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a> <!--클릭되어야 할 곳은 a태그 내부에 span-->
+                                            <span class="data"> 2022.01.20</span> <!--클릭이 안되어도 되는 날짜는 바로 span태그 내부에-->
+                                        </li>
+
+                                        <li>
+                                            <a href="">
+                                                <span>채용</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+
+                                        <li>
+                                            <a href="">
+                                                <span>채용</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+
+                                        <li>
+                                            <a href="">
+                                                <span>채용</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+
+                                        <li>
+                                            <a href="">
+                                                <span>채용</span>
+                                                2022 KIOST 연구원 최종 합격자 발표
+                                            </a>
+                                            <span class="data"> 2022.01.20</span>
+                                        </li>
+                                    </ul>
+                                    <!--버튼넣을때는 p로 해도 되고 span으로 해도됨-->
+                                    <p class="more"><a href="" class="ir_kiost">채용더보기</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="mbox">
+                        <h2>보도자료</h2>
+                        <div class="obj">
+                            <ul>
+                                <li>
+                                    <a href="">KIOST, 인도양 공해상에서 새로운 심해 열수분</a>
+                                    <span class="date">2022.01.20</span>
+                                </li>
+                                <li>
+                                    <a href="">KIOST, 인도양 공해상에서 새로운 심해 열수분</a>
+                                    <span class="date">2022.01.20</span>
+                                </li>
+                                <li>
+                                    <a href="">KIOST, 인도양 공해상에서 새로운 심해 열수분</a>
+                                    <span class="date">2022.01.20</span>
+                                </li>
+                                <li>
+                                    <a href="">KIOST, 인도양 공해상에서 새로운 심해 열수분</a>
+                                    <span class="date">2022.01.20</span>
+                                </li>
+                                <li>
+                                    <a href="">KIOST, 인도양 공해상에서 새로운 심해 열수분</a>
+                                    <span class="date">2022.01.20</span>
+                                </li>
+                            </ul>
+                            <p class="more"><a href="" class="ir_kiost">보도자료더보기</a></p>
+                        </div>
+                    </article>
+
+
+
+                    <article class="mbox mpr">
+                        <a href="">
+                            <span>
+                                <em class="tit">PR<br/>MOVIE</em>
+                                <span class="ir_kiost pr"></span>
+                            </span>
+                            <span class="mprlogo">KIOST</span>
+                            <i class="far fa-play-circle"></i>
+                        </a>
+                    </article>
+
+                </section>
+
+
+                <section class="section_box2 clearfix"> <!--견학안내 사이버투어-->
+                    <article class="iclink mbox">
+                        <a href="">
+                            <div class="photo">
+                                <span class="title">
+                                    <span class="ir_kiost iconk1"></span> <!--이미지를 CSS에서 background로깔면 스크린 리더기가 읽을 수 없으므로 밑에 스크린리더기를 위한 span태그를 일부러 삽입-->
+                                    <span class="titk_tx">KIOST<em>견학안내</em></span>
+                                </span>
+                            </div>
+                            <div class="info">
+                                <em class="tit">해양과학체험전시관</em>
+                                <span class="text">견학일정 및 안내사항을<br/> 해양과학체험관에 따라 자세히 안내해 드립니다.</span>
+                                <span class="btn">자세히보기 </span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="iclink mbox">
+                        <a href="">
+                            <div class="photo">
+                                <span class="title">
+                                    <span class="ir_kiost iconk1"></span> <!--이미지를 CSS에서 background로깔면 스크린 리더기가 읽을 수 없으므로 밑에 스크린리더기를 위한 span태그를 일부러 삽입-->
+                                    <span class="titk_tx">GLOBAL<em>NETWORK</em></span>
+                                </span>
+                            </div>
+                            <div class="info">
+                                <em class="tit">해양과학체험전시관</em>
+                                <span class="text">견학일정 및 안내사항을<br/> 해양과학체험관에 따라 자세히 안내해 드립니다.</span>
+                                <span class="btn">자세히보기 </span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="iclink mbox">
+                        <a href="">
+                            <div class="photo">
+                                <span class="title">
+                                    <span class="ir_kiost iconk1"></span> <!--이미지를 CSS에서 background로깔면 스크린 리더기가 읽을 수 없으므로 밑에 스크린리더기를 위한 span태그를 일부러 삽입-->
+                                    <span class="titk_tx">KIOST<em>CYBERTOUR</em></span>
+                                </span>
+                            </div>
+                            <div class="info">
+                                <em class="tit">해양과학체험전시관</em>
+                                <span class="text">견학일정 및 안내사항을<br/> 해양과학체험관에 따라 자세히 안내해 드립니다.</span>
+                                <span class="btn">자세히보기 </span>
+                            </div>
+                        </a>
+                    </article>
+                </section>
+
+                <section class="section_box3 clearfix"> <!--아이콘 메뉴-->
+                    <div class="mlbox">
+                        <ul>
+                            <li class="link01">
+                                <span class="ir_kiost icmlk1"></span>
+                                <em>사진영상DB</em>
+                                <span>다양한 KIOST의 영상 및 <br/>사진자료를 관리제공</span>
+                            </li>
+
+                            <li class="link02">
+                                <span class="ir_kiost icmlk2"></span>
+                                <em>해양과학도서관</em>
+                                <span>다양한 KIOST의 영상 및 <br/>사진자료를 관리제공</span>
+                            </li>
+
+                            <li class="link03">
+                                <span class="ir_kiost icmlk1"></span>
+                                <em>해양시료도서관</em>
+                                <span>다양한 KIOST의 영상 및 <br/>사진자료를 관리제공</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mrbox">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <span class="ir_kiost icmlk4"></span>
+                                    <em>기술이전</em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="ir_kiost icmlk4"></span>
+                                    <em>연구장비</em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="ir_kiost icmlk4"></span>
+                                    <em>연구위탁</em>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <aside class="banner clearfix"> <!--배너-->
+                    <h3 class="skip">배너모음</h3> <!--화면상에는 안나오지만 스크린 리더기가 읽게하기 위해서-->
+                    <div class="control1">
+                        <a href="" class="ir_kiost prev">배너이전보기</a>
+                        <a href="" class="ir_kiost nest">배너이전보기</a>
+                    </div>
+                    <div class="obox">
+                        <ul class="obj">
+                            <li> <!--화면상에는 6개만 보이고, 오른쪽화살표를 눌렀을때 돌아간다. -->
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage.png" alt="국민권익위원회"/>
+                                </a> <!--a링크에서 target은 새창이 어떻게 열리는지 방법 설정-->
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_002.png" alt="부조리신고센터"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_003.png" alt="대한민국정부"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_004.png" alt="민관합동규제개선추진단"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage.png" alt="국민권익위원회"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_002.png" alt="부조리신고센터"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_003.png" alt="대한민국정부"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_004.png" alt="민관합동규제개선추진단"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage.png" alt="국민권익위원회"/>
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="" target="_blank" title="새창으로 이동합니다.">
+                                    <img src="images/getImage_002.png" alt="부조리신고센터"/>
+                                </a> 
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+        <div class="mnews_letter_wrap"> <!--width값 100%주기 위해서-->
+            <section class="mnews_letter clearfix"> <!-- 왼쪽/ 오른쪽 컨텐츠 경계를 나눠서 float 해제 시키기 위해서 -->
+                <div class="today_wrap"> <!--왼쪽으로 보내는 부분 -->
+                    <div class="mletter_tit"> <!--today랑 많이 본 기사 묶은 것 / 사실상, 넣어도 되고 안넣어도 되는데 강사님이 넣으심(그룹화시키기 위해서 )-->
+                        <em>TODAY <span>2022.01.20</span></em> <!--why? TODAY와 날짜 폰트크기를 다르게 할 예정이기 때문에-->
+                        <h2>온라인 사보</h2>
+                        <div class="today_box">
+                            <h3>많이본기사</h3>
+                            <ol>
+                                <li>
+                                    <a href=""><span class="num">1</span>해양과학연구의 빅데이터 르네상스를 열다</a>
+                                </li>
+                                <li>
+                                    <a href=""><span class="num">2</span>해양과학연구의 빅데이터 르네상스를 열다</a>
+                                </li>
+                                <li>
+                                    <a href=""><span class="num">3</span>해양과학연구의 빅데이터 르네상스를 열다</a>
+                                </li>
+                                <li>
+                                    <a href=""><span class="num">4</span>해양과학연구의 빅데이터 르네상스를 열다</a>
+                                </li>
+                                <li>
+                                    <a href=""><span class="num">5</span>해양과학연구의 빅데이터 르네상스를 열다</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div> <!--today랑 많이 본 기사 끝난 부분 -->
+                    <!--버튼 만들 div -->
+                    <div class="news_control">
+                            <a href="" class="prev"><span class="bico">온라인사보이전보기</span></a>
+                            <a href="" class="next"><span class="bico">온라인사보다음보기</span></a>
+                            <a href="" class="more"><span class="bico">온라인사보더보기</span></a>
+                    </div>
+                </div> <!--왼쪽으로 보내는 것 끝 / left end-->
+
+                <div class="news_letter clearfix">
+                    <ul class="grep clearfix">
+                        <li>
+                            <a href="">
+                                <div class="bbsimg">
+                                    <img src="images/BBS_201804020220514900.jpg" alt="">
+                                </div>
+                                <div class="info">
+                                    <em class="tit">
+                                        <span class="cat">주요이슈</span><br/>바다에서 찾는 국민의 행복
+                                    </em>
+                                    <span class="text">
+                                        바다에서 찾는 국민의 행복<br/>인류에 공헌하는 해양과학기술!<br/>-[KIOST부산]
+                                    </span>
+                                    <span class=date>
+                                        2022.01.20
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <div class="bbsimg">
+                                    <img src="images/BBS_201804021028336110.jpg" alt="">
+                                </div>
+                                <div class="info">
+                                    <em class="tit">
+                                        <span class="cat">연구현장</span><br/>바다에서 찾는 국민의 행복
+                                    </em>
+                                    <span class="text">
+                                        바다에서 찾는 국민의 행복<br/>인류에 공헌하는 해양과학기술!<br/>-[KIOST부산]
+                                    </span>
+                                    <span class=date>
+                                        2022.01.20
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <div class="bbsimg">
+                                    <img src="images/BBS_201804021104227030.jpg" alt="">
+                                </div>
+                                <div class="info">
+                                    <em class="tit">
+                                        <span class="cat">인터뷰</span><br/>바다에서 찾는 국민의 행복
+                                    </em>
+                                    <span class="text">
+                                        바다에서 찾는 국민의 행복<br/>인류에 공헌하는 해양과학기술!<br/>-[KIOST부산]
+                                    </span>
+                                    <span class=date>
+                                        2022.01.20
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <div class="bbsimg">
+                                    <img src="images/BBS_201804021148536640.jpg" alt="">
+                                </div>
+                                <div class="info">
+                                    <em class="tit">
+                                        <span class="cat">연구현장</span><br/>바다에서 찾는 국민의 행복
+                                    </em>
+                                    <span class="text">
+                                        바다에서 찾는 국민의 행복<br/>인류에 공헌하는 해양과학기술!<br/>-[KIOST부산]
+                                    </span>
+                                    <span class=date>
+                                        2022.01.20
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+        </div>
 
         </div>
-        <footer class="footer-group">
 
+        <footer class="footer-group">
+            <div class="footer_wrap clearfix">
+                <div class="footer_info">
+                    <ul class="footer_menu clearfix">
+                        <li><a href=""><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="">이메일무단수집거부</a></li>
+                    </ul>
+                    <p class="add">
+                        (우)49111 부산광역시 영도구 해양로 385(동상동 1166)<br/>
+                        Tel:051-664-3000 Fax: 051-405-9330 Email:kiost@kiost.ac.kr<br/>
+                    </p>
+                    <p class="copy">
+                        copyright&copy; 2022 KIOST ALL RIGHTS RESERVED. <!--&copy; 는 동그라미 안에 c 기호를 출력함-->
+                    </p>
+                </div>
+
+                <aside class="aside_group"> <!--aside태그는 배너 혹은 본문컨텐츠와 관련성이 적은 것들에 사용-->
+                    <ul class="mark">
+                        <li><a href=""><img src="images/good_content.png" alt="굿컨텐츠서비스"></a></li>
+                        <li><a href=""><img src="images/foot_mark_01.png" alt="앤어워드수상인증마크"></a></li>
+                        <li><a href=""><img src="images/foot_mark_02.png" alt="앱어워드코리아인증마크"></a></li>
+                        <li><a href=""><img src="images/wa_mark.png" alt="웹접근성품질인증마크"></a></li>
+                    </ul>
+                    <div class="group">
+                        <div class="sns">
+                            <a href="" class="ic_mark sns1">페이스북</a>
+                            <a href="" class="ic_mark sns2">트위터</a>
+                            <a href="" class="ic_mark sns3">유투브</a>
+                            <a href="" class="ic_mark sns4">블로그</a>
+                            <a href="" class="ic_mark sns5">RSS</a>
+                        </div>
+                        <div class="link_group">
+                            <a href="" class="button">관련사이트<span>+</span></a>
+                            <ul class="site_menu">
+                                <li><a href="">통합서비스</a></li>
+                                <li><a href="">통합서비스</a></li>
+                                <li><a href="">통합서비스</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </footer>
     </div>
 </body>
