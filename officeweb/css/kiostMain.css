@@ -4,3 +4,119 @@
 @import url(header.css);
 @import url(footer.css);
 @import url(font.css);
+
+.container{
+    width: 100%;
+    position: relative;
+}
+
+.mvisual{
+    width: 100%;
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg_area{
+    width: 100%;
+    height: 800px;
+}
+
+.bg_area iframe{
+    
+}
+
+.pattern_bg{
+    background: url(../images/pattern_bg.png) repeat 0 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mvisual h2{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    background: url(../images/mvisual_tit.png) no-repeat 0 0;
+    width: 408px;
+    height: 59px;
+    text-indent: -9999px;
+    margin-left: -204px;
+}
+
+/* 
+컨텐츠에 left: 50%설정한후에 더욱 정중앙으로 보내는 방법
+1. transform: translateX(-50%)
+2. 이미지 전체크기가 408px이면 나누기 2를 해서
+margin-left: -204px */
+
+.mvisual .obj{
+    width: 1240px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mvisual .obj .item_group{
+    position: absolute;
+    bottom: 130px;
+}
+
+.mvisual .obj .item_group .item{
+    float: left;
+    width: 290px;
+    height: 250px;
+    margin-right: 25px;
+    overflow: hidden;
+}
+
+.mvisual .obj .item_group .item:last-child{
+    margin-right: 0;
+}
+
+.mvisual .obj .item_group .item a{
+    width: 290px;
+    height: 250px;
+    display: block;
+    background-color: #000;
+    position: relative;
+    opacity: 0.7;
+}
+
+.item .imgpop img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    transform: translate3d(-1000px,0,0);
+    /*x축, y축, z축 // x축에만 설정한 것과 동일한 효과(translateX)
+    -1000px설정시 화면밖으로 빠져나가 보이지 않음 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* transition을 한번만 선언해놓고 transform, opacity등등 계속 추가가능 ; */
+}
+
+.item_group .item a:hover .imgpop img {
+    transform: translate3d(0,0,0);
+    opacity: 0.6;
+}
+
+.mvisual .item_group .grid_content{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: #fff;
+    text-align: center;
+    background: url(../images/bg_thumb.png) no-repeat left bottom;
+    width: 290px;
+    height: 250px;
+}
+/*width:100%, height:100%도 가능하다
+%가 익스플로러 하위버전에서 먹히지 않는다. 
+opacity도 익스플로러 하위버전에서 먹히지 않는다.*/
+
+.item_group .grid_content .btn{
+    margin-top: 40px;
+    display: inline-block;
+}
+

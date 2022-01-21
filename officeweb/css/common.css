@@ -20,6 +20,7 @@ float:left, right에서 float해제,
 .tar{text-align: right;}
 .tac{text-align: center;}
 
+/* ----margin---- */
 
 .mt5{margin-top: 5px;}
 .mt10{margin-top: 10px;}
@@ -43,3 +44,88 @@ float:left, right에서 float해제,
 .ml10{margin-left: 10px;}
 .ml15{margin-left: 15px;}
 .ml20{margin-left: 20px;}
+
+/* ----padding----- */
+
+.pt5{padding-top: 5px;}
+.pt10{padding-top: 10px;}
+.pt15{padding-top: 15px;}
+.pt20{padding-top: 20px;}
+
+
+.pr5{padding-right: 5px;}
+.pr10{padding-right: 10px;}
+.pr15{padding-right: 15px;}
+.pr20{padding-right: 20px;}
+
+
+.pb5{padding-bottom: 5px;}
+.pb10{padding-bottom: 10px;}
+.pb15{padding-bottom: 15px;}
+.pb20{padding-bottom: 20px;}
+
+
+.pl5{padding-left: 5px;}
+.pl10{padding-left: 10px;}
+.pl15{padding-left: 15px;}
+.pl20{padding-left: 20px;}
+
+/* -----font, color, button ... 모든 페이지에서 반복하여 적용되는 css를 설정----- */
+
+/*field set과 legend는 짝꿍 ---------------- field set과 legend가 정확하게 뭐징...? ---- */
+
+.skip,legend {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    /*text-indent:-9999px*/
+    /*text-indent는 인라인요소에서는 먹히질 않음. 반드시 블럭요소로 변환한 후 적용가능*/
+    position: absolute;
+    left: -999px;
+    line-height: 0;
+    display: block; /*inline-block도 가능,인라인요소만 아니면 됨*/
+
+    /*스크린 리더기는 읽지만 화면에는 안보여도 될때 쓰는 방법*/
+}
+
+#skipMenu{
+    position: relative;
+    width: 100%;
+    z-index: 999;
+}
+
+#skipMenu a{
+    position: absolute;
+    top: -100px;
+    /*화면 바깥으로 빠져서 skipMenu가 안보이면 됨*/
+}
+
+#skipMenu a:hover,
+#skipMenu a:active,
+#skipMenu a:focus {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: block;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*block요소이든, inline요소이든 width:100%주고
+height값 별도 설정 안했을때는 글자 크기 만큼만 크기를 잡음
+(대신 width는 100%적용됨)
+추후에 padding혹은 height값으로 변경해주기 */
+
+
+/* 버튼 만들어 놓기 */
+.btn{
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 30px;
+}

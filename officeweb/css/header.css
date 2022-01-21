@@ -1,1 +1,471 @@
 @charset "utf-8";
+
+#wrapper{
+    width: 100%;
+    position: relative;
+    min-width: 1240px;
+}
+
+
+.header_group{
+    width: 100%;
+    position: relative;
+    min-width: 1240px;
+    background: url(../images/bg_header.png) no-repeat 50% 0;
+    /*background-image는 image만 넣고, no-repeat, 위치적용 (x축, y축)안됨
+    backgorund: image, norepeat,위치 모두 적용가능 */
+
+    /*1240px를 쓸거면 이미지가 적어도 2000px은 되어야 함*/
+}
+
+.info_header{
+    width: 1240px;
+    height: 95px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.info_header .h1_logo {
+    background: url(../images/bg_logo.png) no-repeat 0 0;
+    width: 125px;
+    height: 66px;
+    /*이미지에 맞는 크기로 width랑 height값을 지정해줘야 전체사진이 보인다*/
+    text-indent: -9999px;
+    float: left;
+}
+
+/* 화면에서 대상이 안보일때 차이점 
+visibility: hidden(자신의 영역은 지키되, opacity0 처리한것 같은 효과, 단지 화면에서만 안보이는 것)
+display: none; (자기자신의 컨텐츠까지 없어져서 아무런 존재감도 영역도 없음) */
+
+
+/*앞에 있는 로고가 float로 붕떠있기 때문에 margin 0 auto를 줘도 가운데로 감 */
+.info_header .menu_tab{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.menu_tab ul li{
+    float: left;
+    width: 200px;
+    text-align: center;
+    /* border: 2px solid red; */
+}
+
+.menu_tab .mtbm{
+    font-size: 16px;
+    padding: 20px 0 10px 0;
+    display: inline-block;
+    font-family:'NanumBold';
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+}
+
+/* padding bottom에 10px을 부여함으로써 after에서 생긴 막대기와
+자연스럽게 10px만큼의 공백이 생긴다. */
+
+
+.menu_tab .mtbm span{
+    font-size: 12px;
+}
+
+.menu_tab .mtbm:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    height: 5px;
+    background-color: #005fca;
+    transition: 0.3s cubic-bezier(0,1.42,.96,-0.56);
+    transform: translate3d(0,0,0);
+}
+
+/*애니메이션은 hover하기 전 상태에
+transition을 적용해야 합니당.** */
+
+.menu_tab .mtbm:hover:after,
+.menu_tab .mtbm:active:after,
+.menu_tab .mtbm:focus:after{
+    left: 0;
+    right: 0;
+}
+
+.menu_tab .mtbm_on:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 5px;
+    background-color: #005fca;
+}
+
+.site_search{
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.site_search .search{
+    position: relative;
+    width: 200px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 10px 15px;
+}
+
+.site_search .search .input_val{
+    border:none;
+    width: 130px;
+    box-sizing: border-box;
+    height: 20px;
+    /* outline: none; */
+    /* outline: none;을 하면 클릭을 해도 박스 테두리가 나오지 않음
+    접근성작업에 안좋기 때문에 outline:none은 안쓰는 것을 권장 */
+}
+
+.site_search .search input[type="submit"]{
+    background: url(../images/keyword_btn.png) no-repeat 0 0;
+    width: 18px;
+    height: 17px;
+    border: none;
+    text-indent: -999px;
+    /*font-size:0으로 설정하여도 text-indent:-999px과 동일한 효과가 나옴*/
+}
+/* 속성선택자를 특별히 지정할때는 대괄호 안에 넣어야함!!
+input이라는 태그안에 속성이 type="submit"이라는 것을 찾아서  */
+
+
+.header_navi {
+    width: 100%;
+    min-width: 1240px;
+    background-color: #005fca;
+    height: 60px;
+    line-height: 60px;
+}
+
+.nav_wrapper{
+    width: 1240px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav_wrapper .hm_wrap {
+    float: left;
+}
+/* float를 이용해서 왼쪽으로 배치 */
+
+.hm_wrap a{
+    border: 2px solid #0027a2;
+    /*a태그가 인라인 요소라서 공백이 생겨서
+    공백을 없애주기 위해서 float : left처리*/
+    float:left;
+    height: 26px;
+    display: block;
+    line-height: 26px;
+    margin: 14px 10px 0 0;
+}
+.hm_wrap .hm_home{
+    background: url(../images/header_home.png) no-repeat 0 0;
+    width: 26px;
+    text-indent: -9999px;
+}
+.hm_wrap .hm_eng{
+    color: #fff;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+
+.nav_wrapper .deth_1 {
+    width: 640px;
+    margin: 0 auto;
+}
+/* margin: 0 auto를 이용해서 총 1240px중에서 가운데로 정렬 */
+.deth_1 li {
+    float: left;
+    width: 160px;
+    text-align: center;
+    font-size: 18px;
+    font-family:'NanumBold';
+    font-weight:600;
+    border-right: 2px solid #0027a2;
+    box-sizing:border-box;
+}
+
+.deth_1 li a{
+    color:#fff
+}
+/*a태그 색상은 반드시 명확히 태그 지정해주고 바꿔야지만 변경가능 */
+
+.deth_1 li:first-child{
+    border-left: 2px solid #0027a2;
+}
+
+.nav_wrapper .hm_link_wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/* position: absolute를 이용해서 오른쪽 배치 */
+
+/*우리는 하나의 요소안에 여러개의 이미지를 넣을거임*/
+.hm_link_wrap .hm_link{
+    background: url(../images/hmlink_ti.png) no-repeat 0 16px,url(../images/bg_site.png) no-repeat right 16px;
+    width: 80px;
+    height: 60px;
+    display: inline-block; 
+    /*a태그는 인라인요소이기 때문에 바꿔주지 않으면 적용되지 않는다.
+    옆으로 나란히 배치해주기 위해서 block이 아닌 inline-block으로 설정함  */
+    text-indent: -9999px;
+    margin-right: 10px;
+}
+/*css1,2까지는 하나의 요소안에 backgorund적용시 이미지 한개만 가능했음
+css3부터는 하나의 요소안에 여러개의 backgournd 이미지 적용가능*/
+
+
+.hm_link_wrap .hm_sitemap{
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    background-color: #0027a2;
+    position: relative;
+    float:right;
+}
+
+.hm_link_wrap .hm_sitemap .figer{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    width: 40px;
+    height: 20px;
+}
+
+.hm_sitemap .figer .bar{
+    width: 40px;
+    height: 4px;
+    background-color: #fff;
+    display: inline-block;
+    text-indent: -9999px;
+    line-height: 0;
+    position:absolute;
+}
+
+/*버튼만드는 방식 여러개 
+1. nth-child()
+2. nth-of-type()
+3. 클래스 이름 각각 부여하여 클래스별로 따로 설정값 부여*/
+.hm_sitemap .figer .bar1{
+    top:0;
+    left: 0;
+}
+
+.hm_sitemap .figer .bar2{
+    top: 10px;
+    left: 0;
+}
+
+
+.hm_sitemap .figer .bar3{
+    top:20px;
+    left: 0;
+}
+
+/*햄버거 버튼은 p태그나 span태그로 만듦*/
+
+.hm_sitemap:hover .figer .bar{
+    width: 4px;
+    height: 4px;
+}
+
+.hm_sitemap:hover .figer .bar1{
+    top: 10px;
+    left: 0;
+    transition-delay: 0.1s;
+}
+
+.hm_sitemap:hover .figer .bar2{
+    top: 10px;
+    left: 14px;
+    transition-delay: 0.2s;
+}
+
+.hm_sitemap:hover .figer .bar3{
+    top:10px;
+    left: 28px;
+    transition-delay: 0.3s;
+}
+
+.hm_sitemap * {
+    transition: all 0.2s ease;
+}
+/*class .hm_sitemap 안에 모든 자식을 뜻함*/
+
+
+.sub_menu{
+    width: 100%;
+    background: url(../images/bg_gnb.png) repeat 0 0;
+    min-width: 1240px;
+    position: absolute;
+    left: 0;
+    top: 155px;
+    display: none;
+}
+
+/*width:100%를 준곳에는 무조건 min-width를 준다
+센터에 들어가는 컨텐츠의 width값 만큼 줄것 */
+
+.sub_menu .animate{
+    width: 1240px;
+    height: 400px;
+    margin: 0 auto;
+    color: #fff;
+    position: relative;
+    background: url(../images/bg_tnb.png) no-repeat 0 0;
+}
+/*a태그의 font-color는 하얀색으로 전혀 안바뀜*/
+
+
+.animate a{
+    color: #fff;
+}
+/*a링크 건 것은 a까지 꼭 찍어야 폰트 새상이 바뀐다.
+부모에서 바뀐다고 전혀 바뀌지 않음*/
+
+.animate .title{
+    width: 300px;
+    float: left;
+    padding-top: 50px;
+}
+
+.animate .title .ti{
+    font-size: 28px;
+    margin: 25px 0;
+    font-family:'NanumBold';
+    font-weight:600;
+}
+.animate .title .text{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.animate .title .btn_text{
+    width: 120px;
+}
+
+.animate .title:hover .btn_text{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.animate .tm{
+    /* margin-left: 300px; 이렇게 해도 동일한 결과를 낼 수 있으나
+    윗줄의 통일성있게 같은 방법으로 해보겠다  */
+    /* width: 640px;
+    margin: 0 auto; 이것도 가능*/
+    width: 640px;
+    float: left;
+}
+
+.animate .tm li.th1{
+    float: left;
+    width: 160px;
+    border-right: 2px solid #1d1f26;
+    box-sizing: border-box;
+    height: 400px;
+    padding-top: 50px;
+}
+
+.animate .tm li.th1:first-child{
+    border-left: 2px solid #1d1f26;
+}
+
+.animate .tm a.link_1th{
+    font-size: 20px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.animate .tm a.link_1th:after{
+    content: '';
+    width: 3px;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+.animate .tm ul{margin-top: 30px;}
+.animate .tm ul li{
+    font-size: 14px;
+    line-height: 2;
+}
+/*line-height는 font-size대비 곱하는 것이므로
+단위가 필요없다.*/
+
+.animate .tm ul li a{
+    display: block;
+    padding-left: 20px;
+}
+.animate .tm ul li a:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.animate .gnb_link{
+    /* position: absolute;
+    right: 50px;
+    top: 0;
+    */
+    width: 300px;
+    float: left;
+    padding: 50px 0px 0 100px;
+    box-sizing: border-box;
+}
+
+/* 3개의 요소 일렬로 놓는 방법
+1. float: left *3 (각각 width값 설정후)
+2. float: left + margin: 0 auto + position: absolute
+3. float: left(width:300px) +margin-left:300px (width:640px) + position:absolute
+margin-left값 주는건 강제로 미는 것이기 때문에 권장 x(비추) */
+
+.animate .gnb_link a{
+    display: block;
+    width: 80px;
+    height: 54px;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*겹침으로 인해 2px되는 현상을 없애기 위해서
+중간 박스의 위아래 border값을 none처리함 */
+.animate .gnb_link a:nth-child(2){
+    border-top: none;
+    border-bottom: none;
+}
+
+/*보통 하나의 파일에 관련 이미지가 여러개 있음
+하나의 파일에 여러 이미지 있을때 어떻게?
+background-position값 이용!!*/
+.animate .gnb_link .icon_gnb{
+    background: url(../images/icon_gnb.png) no-repeat;
+    display: block;
+    width: 80px;
+    height: 54px;
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+
+.animate .gnb_link .icon1{background-position: 18px 0px;}
+.animate .gnb_link .icon2{background-position: 18px -95px;}
+.animate .gnb_link .icon3{background-position: 18px -188px;}
+
+
+/* 면접질문 : "스프라이트 코딩에 대해 설명해보세요" 자주나옴 */
+
+/* 보통 영상에는 패턴이나 어두운 색상을 덮는다
+(영상위에도 컨텐츠를 잘 보이게 해야하기 때문에)
+영상을 죽여놓고 위의 컨텐츠를 살려야 한다  */
