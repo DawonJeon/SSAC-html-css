@@ -20,6 +20,8 @@ float:left, right에서 float해제,
 .tar{text-align: right;}
 .tac{text-align: center;}
 
+.none{display: none;}
+
 /* ----margin---- */
 
 .mt5{margin-top: 5px;}

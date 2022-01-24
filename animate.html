@@ -26,9 +26,14 @@
         }
         function open () {
             _get('.btn').addEventListener('mouseover', () => {
-                _get('.open').style.display = 'block'
+                _get('.open').style.display = 'block '
             })
         }
+        fetch('API')
+            .catch((res) => {
+                
+            }, )
+            .error((err) => {})
         window.addEventListener('DOMContentLoaded', open)
     </script>
 </body>

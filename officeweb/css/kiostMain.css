@@ -131,3 +131,225 @@ opacity도 익스플로러 하위버전에서 먹히지 않는다.*/
 .mvisual .item_group .item a:hover .btn{
     background-color: rgba(255,255,255,0.3);
 }
+
+/*--------------------------------지각------------------------------*/
+.mvisual .obj .control {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    width: 110px;
+    margin-left: -55px;
+
+}
+
+.mvisual .obj .control a{
+    color: #fff;
+    background: url(../images/micon.png) no-repeat;
+    width: 12px; height: 19px; margin: 0 5px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.mvisual .obj .control a:nth-of-type(1){
+    background-position: 0 0;
+}
+
+.mvisual .obj .control a:nth-of-type(2){
+    background-position: -16px 0;
+}
+.mvisual .obj .control a:nth-of-type(3){
+    background-position: -30px 0;
+}
+.mvisual .obj .control a:nth-of-type(4){
+    background-position: -46px 0;
+}
+
+
+.mvisual .obj .control a:nth-of-type(1):hover{
+    background-position: 0 -19px;
+}
+
+.mvisual .obj .control a:nth-of-type(2):hover{
+    background-position: -16px -19px;
+}
+.mvisual .obj .control a:nth-of-type(3):hover{
+    background-position:-30px -19px;
+}
+.mvisual .obj .control a:nth-of-type(4):hover{
+    background-position: -46p -19px;
+}
+
+/* ----------------------지각후 클론코딩 시작------------------------ */
+
+
+.popup_zone {
+    position: relative;
+    /*position: relative는 본래 자기자신이 기준*/
+    top: -40px;
+    left: 0;
+    width: 1240px;
+    margin: 0 auto;
+    height: 80px;
+    border: 1px solid#d9d9d9;
+    padding: 15px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/*만약 absolute로 작업했다면 top, left가 너무나 큰 px이 나오기 때문에
+너무큰 값이 나오면 작업을 잘못하고 있는 것임. */
+
+.ir_kiost{
+    background: url(../images/micon.png) no-repeat;
+}
+
+
+.popup_zone h2{
+    font-size: 16px;
+    float: left;
+    padding-right: 80px;
+}
+.popup_zone .aram{
+    width: 36px;
+    height: 40px;
+    background-position: -158px 0;
+    display: inline-block;
+    /*그림이 글자와 글자 사이에 들어가면 position absolute값 설정*/
+    position: absolute;
+    top: 18px;
+    left: 70px;
+}
+
+.popup_zone .popup_grep{
+    float: left;
+    width: 900px;
+    line-height: 48px;
+    height: 48px;
+    overflow: hidden;
+    font-size: 14px;
+    position: relative;
+}
+
+/*제이쿼리에서 애니메이션 처리를 하려면 반드시 position:absolute처리가 되어 있어야함 */
+
+.popup_zone .popup_obj{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 48px;
+}
+
+
+.popup_zone .popup_control{
+    float: left;
+    margin-top: 10px;
+}
+
+.popup_zone .popup_control *{
+    vertical-align: middle;
+}
+/*요소들끼리 세로 중앙 정렬*/
+
+.popup_control .count{
+    color: #ff4500;
+    font-weight: 600;
+    float: left;
+    margin-top: 2px;}
+    /* 1위치가 내려가 있어서 위로 올리려고 float:left처리 해줌 */
+
+
+.popup_control a{
+    width: 12px;
+    height: 19px;
+    margin: 0 5px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+.popup_control a.prev{
+    background-position: 0 -19px;
+}
+.popup_control a.stop{
+    background-position: -16px -19px;
+}
+.popup_control a.play{
+    background-position: -46px -19px;
+}
+.popup_control a.next{
+    background-position: -30px -19px;
+}
+
+.mbgwap {
+    width: 1240px;
+    margin: 10px auto 50px auto;
+
+    /*위의 popup-zone박스가 position:absolute해서 -40px로 위로 올라갔으므로
+    margin: 50px auto시 위의 여백은 90px이 되고 아래는 50p이 되어 불균형된다*/
+}
+.mbgwap .section_box1 .mbox{
+    float: left;
+    width: 400px;
+    height: 240px;
+    margin-right: 20px;
+    position: relative;
+}
+.mbgwap .section_box1 .mbox:last-child{
+    margin-right: 0;
+}
+.mbgwap .section_box1 .mbox h2{
+    font-size: 16px;
+}
+.section_box1 .mbox .news .title_ti2 {
+    float: left;
+    margin-right: 20px;
+    font-size: 14px;
+}
+.section_box1 .mbox .news .title_ti2 .over{
+    background: url(../images/bg_mnew.png) no-repeat right 55%;
+    padding-right: 14px;
+    color: #3378c1;
+}
+.mbox .obj {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 100%;
+    font-size: 12px;
+}
+/* 보통 본문 최대 글자크기는 12px (그이상은 보통 넘어가지 않는다) */
+
+.mbox .obj li{
+    line-height: 1.8; /*행간작업은 무조건 폰트보다 커야한다 . 3px하면 font-size보다 작다 */
+}
+
+.section_box1 .more{
+    position: absolute;
+    top: -40px;
+    right: 0;
+}
+
+.section_box1 .more a{
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background-position: -110px -5px;
+    text-indent: -9999px;
+}
+ 
+.mbox .obj li .data{
+    float: right;
+    letter-spacing: -0.05em; /*자간의 최솟값은 -1px이 최소값, 이보다 작을순 없다.
+    px은 소수점단위로 계산불가, em은 소수점단위로 미묘하게 계산 가능
+    ex) 0.05em이라면 12*0.05=0.6임*/
+}
+ 
+.news .obj li a span{
+    color: #3378c1;
+}
+
+/* display: none처리하면 스크린 리더기가 안읽음
+화면에 안나오는걸 스크린리더기가 굳이 읽을필요가 없으므로
+화면상에 안나오는건 display:none처리 하기 */
+
+
+
+
