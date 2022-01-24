@@ -131,3 +131,10 @@ height값 별도 설정 안했을때는 글자 크기 만큼만 크기를 잡음
     text-align: center;
     margin-top: 30px;
 }
+
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+    width: 100%;
+}
