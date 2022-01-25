@@ -770,13 +770,19 @@ background-position: -235px -19px;}
     margin-right: 10px;
 }
 
-.grep li .bbsimg{width: 220px;
+.grep li .bbsimg{
+    width: 220px;
     height:150px;
     overflow: hidden;}
 
 .grep li .bbsimg img{
     width: 100%;
     height: 100%;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+.grep li a:hover .bbsimg img{
+    transform: scale(1.2);
 }
 .grep li .info{
     text-align: right;

@@ -680,8 +680,8 @@
         </div>
 
         <footer class="footer-group">
-            <div class="footer_wrap clearfix">
-                <div class="footer_info">
+            <div class="footer_wrap clearfix"> <!--자식들이 float라서 부모에 float해제 설정-->
+                <div class="footer_info fl">
                     <ul class="footer_menu clearfix">
                         <li><a href=""><strong>개인정보처리방침</strong></a></li>
                         <li><a href="">이메일무단수집거부</a></li>
@@ -695,8 +695,8 @@
                     </p>
                 </div>
 
-                <aside class="aside_group"> <!--aside태그는 배너 혹은 본문컨텐츠와 관련성이 적은 것들에 사용-->
-                    <ul class="mark">
+                <aside class="aside_group fr"> <!--aside태그는 배너 혹은 본문컨텐츠와 관련성이 적은 것들에 사용-->
+                    <ul class="mark"> <!--부모도 float:right,자식드 float:left처리 되어있기 때문에 굳이 clearfix필요없음 -->
                         <li><a href=""><img src="images/good_content.png" alt="굿컨텐츠서비스"></a></li>
                         <li><a href=""><img src="images/foot_mark_01.png" alt="앤어워드수상인증마크"></a></li>
                         <li><a href=""><img src="images/foot_mark_02.png" alt="앱어워드코리아인증마크"></a></li>
@@ -710,7 +710,7 @@
                             <a href="" class="ic_mark sns4">블로그</a>
                             <a href="" class="ic_mark sns5">RSS</a>
                         </div>
-                        <div class="link_group">
+                        <div class="link_group mt20">
                             <a href="" class="button">관련사이트<span>+</span></a>
                             <ul class="site_menu">
                                 <li><a href="">통합서비스</a></li>
