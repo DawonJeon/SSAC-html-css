@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" name="frm" action=""> <!--action은 back단 아이들이 손보는곳-->
+        <fieldset> <!--fieldset:관련 요소를 그룹화, legend : fieldset의 제목 (필수입력 x, fieldset이 나오면 legend가 반드시 나와야 함)/ -->
+            <legend>요소확인</legend>
+            <input type="radio" id="web1" name="web"/>
+            <label for="web1">웹디자이너</label><br/> <!--input의 id값과 label의 for값은 무조건 같아야함-->
+
+            <input type="radio" id="web2" name="web"/>
+            <label for="web2">퍼블리셔</label><br/>
+
+            <input type="radio" id="web3" name="web"/>
+            <label for="web3">프론트앤드</label><br/>
+
+            <input type="radio" id="web4" name="web"/>
+            <label for="web4">백엔드</label><br/>
+
+            <input type="radio" id="web5" name="web"/>
+            <label for="web5">기획</label><br/>
+            
+
+            <!--radio
+                1. input의 id는 동일하면 안된다
+                2. 문자를 눌러도 클릭됨
+                3. name은 모두 동일해야한다 
+                (그렇지 않으면 여러개가 선택되는데, radio는 다중선택아님
+                다중선택은 체크박스)-->
+
+            <input type="checkbox" id="job1" name="job"/>
+            <label for="job1">백엔드</label><br/>
+
+            <input type="checkbox" id="job2" name="job"/>
+            <label for="job2">기획</label><br/>
+
+            <input type="checkbox" id="job3" name="job"/>
+            <label for="job2">마케팅</label><br/>
+
+            <!--checkbox
+                1. 동일한 id를 사용해서는 안된다(radio와 동일)
+                2. 다중선택가능 (name이 동일하든, 다르든 무조건 다중선택 가능) -->
+
+
+            
+
+        </fieldset>
+    </form>
+</body>
+</html>
