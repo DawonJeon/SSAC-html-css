@@ -25,7 +25,6 @@
             <input type="radio" id="web5" name="web"/>
             <label for="web5">기획</label><br/>
             
-
             <!--radio
                 1. input의 id는 동일하면 안된다
                 2. 문자를 눌러도 클릭됨
@@ -46,9 +45,23 @@
                 1. 동일한 id를 사용해서는 안된다(radio와 동일)
                 2. 다중선택가능 (name이 동일하든, 다르든 무조건 다중선택 가능) -->
 
+            <input type="password" name="pw" placeholder="비밀번호"/></br/>
+            <!--placeholder : html4에서는 못쓰나(대신 value사용) html5에서는 가능-->
+            <input type="text" name="text" value="이름을 입력하세요"/></br/>
+            <!--"이름을 입력하세요" text를 날리는것은 script영역에서!-->
 
-            
+            <!--
+                placeholer는 사용자가 텍스트 입력시 자동적으로 사라짐
+                반면, value는 사용자가 텍스트를 입력해도 사라지지 않고 문자열로 추가된 형태로 보임.
+            -->
 
+            <input type="search" name="search" title="제품검색"/> <!--title은 스크린 리더기가 읽도록
+            title대신 label태그가 있다면 굳이 title속성 추가하지 않아도 됨.
+            텍스트가 붙어있으면 label작업
+            텍스트가 붙어있지않으면 굳이 label작업 x, title로 하는것 가능-->
+
+            <!--search는 IE10버전이상부터 지원가능
+            caniuse.com에서 버전별 적용가능 기술확인 -->
         </fieldset>
     </form>
 </body>
