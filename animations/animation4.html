@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    ul,li,a,span,em,div,p,h2{margin: 0; padding: 0;}
+    em{font-style: normal;} /*글자 기울기  없앰*/
+    ul{list-style: none;} /*ul이 오면 자동으로 오는 점들이 없어짐*/
+    a{
+        text-decoration: none;
+        color: #222;
+    }
+    img{border: none;}  
+
+    .style_wrap{
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+        margin: 50px auto;
+        text-align: center;
+        font-size: 18px;
+        position: relative;
+        background: rgb(2,0,36);
+        background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(54,24,85,0.698383577063638) 44%, rgba(213,0,255,0.6535656498927696) 92%);
+        /*구글링 css gradient*/
+    }
+
+    img{
+        width: 500px;
+        height: 500px;
+    }
+
+    .style_1{
+        position: absolute;
+        bottom: 200px;
+        right: 125px;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+    }
+
+    .style_1 h2{
+        font-size: 30px;
+    }
+
+    .style_1 p{
+        margin-top: 10px;
+    }
+
+    .style_1:before,
+    .style_1:after{
+        content: '';
+        width: 500px;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+    }
+
+    .style_1:before{
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+    }
+
+    .style_1:after{
+        bottom: 0;
+        right: 0;
+        transform: translateX(-100%);
+    }
+    /*transform에 자연스럽게 설정해주려면 transition을 통해서 */
+
+    .style_1 div:before,
+    .style_1 div:after{
+        content: '';
+        height: 500px;
+        width: 2px;
+        background-color: #fff;
+        position: absolute;
+    }
+
+    .style_1 div:before{
+        top: 0;
+        left: 0;
+        transform: translateY(100%);
+    }
+    .style_1 div:after{
+        bottom: 0;
+        right: 0;
+        transform: translateY(-100%);
+    }
+
+    /*hover동작을 만들어보자*/
+
+    .style_wrap:hover .style_1:before{
+        transform: translateX(0);
+        transition-delay:  0.1s;
+
+    }
+    .style_wrap:hover .style_1:after{
+        transform: translateX(0);
+        transition-delay:  0.3s;
+    }
+
+    .style_wrap:hover .style_1 div:before{
+        transform: translateY(0);
+        transition-delay:  0.5s;
+
+    }
+    .style_wrap:hover .style_1 div:after{
+        transform: translateY(0);
+        transition-delay:  0.7s;
+    }
+    /*transition-delay를 통해 시간차 선만들기 기능 구현 가능 */
+
+    .style_wrap:hover img{
+        opacity: 0;
+    }
+
+    /* transition 효과 적용 한번에*/
+
+    .style_wrap *,
+    .style_wrap *:before,
+    .style_wrap *:after{
+        transition: transform 0.5s ease, opacity 2s;
+    } /** transition은 여러개를 한꺼번에 설정할 수 있다. */
+
+
+</style>
+</head>
+<body>
+    <div class="style_wrap">
+        <img src="/SSACacademy/images/18.png" alt="">
+        <div class="style_1">
+            <!-- style_1의 before-->
+            <div><!-- div안에 di를 준 이유는 각각 선이 4개이기 때문에 before,after 2개, 2개씩 뽑아내기 위해서 -->
+                <h2>WEB DESIGN</h2>
+                <p>UX DESIGN</p>
+            </div>
+            <!-- style_1의 after-->
+        </div>
+    </div>
+</body>
+</html>

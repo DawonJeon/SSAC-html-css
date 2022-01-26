@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table tag, form요소</title>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse; /*table태그를 썼을때 항상!!! 항상 같이 써야한다고 기억하자!!*/
+
+        }
+        table,th,td{
+            border: 1px solid #222;
+        }
+
+        /*border값 줬을 때, 자동 두줄이 만들어진다.
+        한줄로 만들려면 어떻게 해야하나?
+        border-collapse*/
+    </style>
+</head>
+<body>
+    <!--
+        table summary = ""(지금은 사용x 
+        !DOCTYPE html로 안되어있는 곳(html4) 에는 써야하고
+        !DOCTYPE html로 선언되어 있는 곳에는 굳이 쓰지 x)
+
+        caption: 제목(caption은 화면에서 보임 / cf) summary는 화면에서 안보임)
+        colgroup (col width를 모두 합쳐서)
+            col width (표의 각각 요소들의 가로 길이)
+        thead (표의 머리글정보, 속성 넣는것)
+            tr(세로줄 각각)
+                th(가로줄 각각)
+        tbody
+            tr(세로줄)
+                th/td
+            tr(세로줄)
+                th/td
+        tfoot(마지막 취합정보)
+            tr
+                th/td
+
+        스크린리더기가 읽는 순서를 정하는것 (id/ headers)
+        **id는 th에만 넣을수 있다
+        hearder는 td에만 넣을수 있다 
+    -->
+
+    <table>
+        <!--<!DOCTYPE html>선언인경우(즉,html 5부터) summary 적용 안함
+            summary : table 설명-->
+        <caption>취업현황</caption>
+        <colgroup>
+            <col width="30%"/>
+            <col width="30%"/>    
+            <col width="30%"/>    
+        </colgroup>
+        <thead>
+            <!--thead에는 td적용 안됨
+                th만 가능-->
+            <tr>
+                <th>구분</th>
+                <th scope="col" id="web1">웹디자이너</th>
+                <th scope="col" id="web2">웹퍼블리셔</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th scope="col"  id="total">합계</th> <!--제목ㅇ네 해당하는건 th-->
+                <td headers="web1 total">20명</td> <!-- ㄴheaders에 있는 순서대로 그 전에 아이디를 차례차례로 읽는다. 읽는 순서: 웹디자이너 - 합계 - 20명 -->
+                <td headers="web2 total">30명</td>
+                <!--id는 th에만 쓴다.-->
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <th scope="col">1월취업</th>
+                <td>20명</td>
+                <td>30명</td>
+            </tr>
+            <tr>
+                <th scope="col">2월취업</th>
+                <td>10명</td>
+                <td>10명</td>
+            </tr>
+        </tbody>
+        <!--th만 자동굵게처리 되면서 센터정렬됨 (기본값, default)-->
+    </table>
+
+<!--colspan 세로병합, rowspan 가로병합 -->
+    <table>
+        <tr>
+            <td rowspan="2">1,4</td>
+            <td colspan="2">2,3</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </table>
+</body>
+</html>
